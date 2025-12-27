@@ -28,6 +28,10 @@ class User extends Authenticatable
     'status'
 ];
 
+public function buku(){
+        return $this->hasMany(peminjaman::class);
+    }
+
 protected $hidden = [
     'password',
 ];

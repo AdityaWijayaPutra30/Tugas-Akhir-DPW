@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-12-27T10:00:00.000Z" agent="Antigravity" etag="version1" version="21.0.0" type="device">
+  <diagram id="flowchart-gabungan-v2" name="Flowchart Transaksi Rapih">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pool1" value="Sistem Perpustakaan" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=20;horizontalStack=0;fillColor=#ffffff;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1000" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_user" value="User (Anggota)" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="pool1">
+          <mxGeometry y="20" width="1000" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_admin" value="Admin (Petugas)" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="pool1">
+          <mxGeometry y="320" width="1000" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_sistem" value="Sistem (Backend)" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="pool1">
+          <mxGeometry y="520" width="1000" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_pinjam" value="ALUR PEMINJAMAN" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="lane_user">
+          <mxGeometry x="150" y="10" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="start_p" value="Mulai Pinjam" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane_user">
+          <mxGeometry x="200" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_p1" value="Login &amp; Pilih Buku" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="190" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_p1" value="Stok > 0?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="200" y="60" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="start_p" target="proc_p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="proc_p1" target="dec_p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_p_fail" value="Notif: Stok Habis" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane_user">
+          <mxGeometry x="360" y="155" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p3" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="pool1" source="dec_p1" target="proc_p_fail">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="proc_p_save" value="1. Create Peminjaman&#xa;2. Kurangi Stok" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="190" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p4" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_sistem" source="dec_p1" target="proc_p_save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_p_success" value="Terima Bukti Pinjam" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="40" y="230" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="pool1" source="proc_p_save" target="proc_p_success">
+          <mxGeometry relative="1" as="geometry">
+             <Array as="points">
+              <mxPoint x="100" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="end_p" value="Selesai" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="lane_user">
+          <mxGeometry x="200" y="225" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_user" source="proc_p_success" target="end_p">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_p7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="lane_user" source="proc_p_fail" target="end_p">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sep" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=2;fillColor=#000000;" edge="1" parent="pool1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="20" as="sourcePoint" />
+            <mxPoint x="550" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_kembali" value="ALUR PENGEMBALIAN" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="lane_user">
+          <mxGeometry x="650" y="10" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="start_k" value="Mulai Kembali" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane_user">
+          <mxGeometry x="700" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k1" value="Serahkan Buku &amp; Show ID" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_user">
+          <mxGeometry x="690" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_user" source="start_k" target="proc_k1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k2" value="Cek Fisik &amp;&#xa;Input ke Sistem" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="690" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="proc_k1" target="proc_k2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k3" value="Cari Data Peminjaman" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="690" y="50" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="proc_k2" target="proc_k3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_k1" value="Status ==&#xa;'Dipinjam'?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="700" y="140" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_sistem" source="proc_k3" target="dec_k1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k_err" value="Error: Data Invalid" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="850" y="165" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k5" value="Tidak" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_sistem" source="dec_k1" target="proc_k_err">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k_update" value="1. Update Status='Kembali'&#xa;2. Set Tanggal Kembali&#xa;3. Tambah Stok (+1)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_sistem">
+          <mxGeometry x="670" y="280" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k6" value="Ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="lane_sistem" source="dec_k1" target="proc_k_update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_k_done" value="Konfirmasi ke User" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="lane_admin">
+          <mxGeometry x="850" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="pool1" source="proc_k_update" target="proc_k_done">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="910" y="835" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow_k8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="proc_k_err" target="proc_k_done">
+          <mxGeometry relative="1" as="geometry">
+             <Array as="points">
+              <mxPoint x="910" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="end_k" value="Selesai" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="lane_user">
+          <mxGeometry x="860" y="50" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_k9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="pool1" source="proc_k_done" target="end_k">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

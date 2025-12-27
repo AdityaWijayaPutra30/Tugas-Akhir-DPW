@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ControllerPerpus;
-
+// LOGIN
 Route::get('/', [ControllerPerpus::class, 'login']);
 Route::get('/login', [ControllerPerpus::class, 'login'])->name('login');
 Route::post('/login', [ControllerPerpus::class, 'prosesLogin'])->name('login.process');
@@ -29,6 +30,8 @@ Route::get('/admin/dashboard', function () {
 // REGISTER
 Route::get('/register', [ControllerPerpus::class, 'register'])->name('register');
 Route::post('/register', [ControllerPerpus::class, 'storeRegister'])->name('register.store');
+
+Route::resource('buku', BukuController::class);
 
 
 
