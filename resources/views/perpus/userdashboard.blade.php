@@ -9,6 +9,8 @@
 <body>
  <h3>INI USER DASHBOARD</h3>
 
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloribus quos itaque saepe animi nesciunt, expedita repudiandae? Assumenda rerum magni excepturi tempora. Officiis porro reiciendis molestiae impedit commodi quae suscipit.</p>
+
 
 </body>
 </html>
