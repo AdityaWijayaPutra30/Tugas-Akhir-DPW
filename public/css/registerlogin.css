@@ -1,0 +1,20 @@
+body{
+    background-image: url("../assets/background_register.png");
+    background-size: cover;
+    background-position: center;
+    background-position-y: 10px;
+    background-blend-mode: darken;
+    background-color: #000000bf;
+}
+#background-form{
+    width: 100%;
+    padding: 20px;
+    margin: 100px auto;
+}
+
+#form-control{
+    display: flex;
+    height: 1000px;
+}
+
+

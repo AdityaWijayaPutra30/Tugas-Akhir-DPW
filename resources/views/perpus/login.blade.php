@@ -2,53 +2,58 @@
 
 @section('title', 'Login')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/registerlogin.css') }}">
+@endpush
+
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
 
-                    <h4 class="text-center mb-4">Login Perpustakaan</h4>
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+<div class="row justify-content-center">
+    <div class="col">
+        <div class="card" id="background-form">
+            <div class="card-body">
 
-                    {{-- Form Login --}}
-                    <form method="POST" action="/login">
-                        @csrf
+                <h4 class="text-center mb-4">Login Perpustakaan</h4>
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
 
-                        {{-- Username --}}
-                        <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control" placeholder="Masukkan username"
-                                required>
-                        </div>
+                {{-- Form Login --}}
+                <form method="POST" action="/login">
+                    @csrf
 
-                        {{-- Password --}}
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Masukkan password"
-                                required>
-                        </div>
-
-                        {{-- Tombol Login --}}
-                        <button type="submit" class="btn btn-primary w-100">
-                            Login
-                        </button>
-                    </form>
-
-                    {{-- Register --}}
-                    <div class="text-center mt-3">
-                        <span>Belum punya akun?</span>
-                        <a href="/register" class="text-decoration-none">
-                            Register
-                        </a>
+                    {{-- Username --}}
+                    <div class="mt-5">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Masukkan username"
+                            required>
                     </div>
 
+                    {{-- Password --}}
+                    <div class="mt-5">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Masukkan password"
+                            required>
+                    </div>
+
+                    {{-- Tombol Login --}}
+                    <button type="submit" class="btn btn-success w-100 mt-5">
+                        Login
+                    </button>
+                </form>
+
+                {{-- Register --}}
+                <div class="mt-3">
+                    <span>Belum punya akun?</span>
+                    <a href="/register" class="fs-6">
+                        Sign Up
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 @endsection
