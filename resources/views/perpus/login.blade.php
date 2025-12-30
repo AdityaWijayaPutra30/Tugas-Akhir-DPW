@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Yubook - Login')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/registerlogin.css') }}">

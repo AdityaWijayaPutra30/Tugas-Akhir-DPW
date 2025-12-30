@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Register')
+@section('title', 'Yubook - Sign Up')
 
 
 @push('styles')
