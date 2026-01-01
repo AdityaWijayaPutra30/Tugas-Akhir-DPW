@@ -20,9 +20,13 @@ Route::get('/', [ControllerPerpus::class, 'login']);
 Route::get('/login', [ControllerPerpus::class, 'login'])->name('login');
 Route::post('/login', [ControllerPerpus::class, 'prosesLogin'])->name('login.process');
 
-Route::get('/user/dashboard', function () {
-    return view('perpus.userdashboard');
-})->name('user.dashboard');
+use App\Http\Controllers\UserDashboardController;
+
+// USER DASHBOARD
+Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+Route::get('/user/dashboard/top', [UserDashboardController::class, 'top'])->name('user.dashboard.top');
+Route::get('/user/dashboard/recent', [UserDashboardController::class, 'recent'])->name('user.dashboard.recent');
+Route::get('/user/dashboard/rating', [UserDashboardController::class, 'rating'])->name('user.dashboard.rating');
 Route::get('/admin/dashboard', function () {
     return view('perpus.admindashboard');
 })->name('admin.dashboard');
