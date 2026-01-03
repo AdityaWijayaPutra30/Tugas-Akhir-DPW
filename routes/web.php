@@ -35,6 +35,10 @@ Route::get('/admin/dashboard', function () {
 Route::get('/register', [ControllerPerpus::class, 'register'])->name('register');
 Route::post('/register', [ControllerPerpus::class, 'storeRegister'])->name('register.store');
 
+// LUPA PASSWORD
+Route::get('/forgot-password', [ControllerPerpus::class, 'forgotPassword'])->name('forgot.password');
+Route::post('/forgot-password', [ControllerPerpus::class, 'prosesForgotPassword'])->name('forgot.password.process');
+
 Route::resource('buku', BukuController::class);
 
 

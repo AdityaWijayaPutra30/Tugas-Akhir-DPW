@@ -37,6 +37,10 @@
                         <input type="password" name="password" class="form-control" placeholder="Masukkan password"
                             required>
                     </div>
+                    
+                    <div class="mt-2 text-end">
+                        <a href="{{ route('forgot.password') }}" class="text-decoration-none">Lupa Password?</a>
+                    </div>
 
                     {{-- Tombol Login --}}
                     <button type="submit" class="btn btn-success w-100 mt-5">

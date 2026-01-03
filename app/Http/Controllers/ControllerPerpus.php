@@ -83,4 +83,44 @@ class ControllerPerpus extends Controller
         // redirect ke login
         return redirect('/login')->with('success', 'Registrasi berhasil, silakan login');
     }
+
+    // Tampil Lupa Password
+    public function forgotPassword()
+    {
+        return view('perpus.forgot_password');
+    }
+
+    // Proses Lupa Password
+    public function prosesForgotPassword(Request $request)
+    {
+        // Validasi
+        $request->validate([
+            'username' => 'required',
+            'email' => 'required|email',
+            'password_lama' => 'required',
+            'password_baru' => 'required|min:3',
+        ]);
+
+        // Cari user
+        $user = User::where('username', $request->username)
+            ->where('email', $request->email)
+            ->first();
+
+        // Cek apakah user ada
+        if (!$user) {
+            return back()->with('error', 'Username atau Email tidak ditemukan');
+        }
+
+        // Cek password lama
+        if (!Hash::check($request->password_lama, $user->password)) {
+            return back()->with('error', 'Password lama salah');
+        }
+
+        // Update password
+        $user->update([
+            'password' => Hash::make($request->password_baru)
+        ]);
+
+        return redirect('/login')->with('success', 'Password berhasil diubah, silakan login dengan password baru');
+    }
 }

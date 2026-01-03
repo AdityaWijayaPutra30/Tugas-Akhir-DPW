@@ -1,80 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2025-12-27T10:00:00.000Z" agent="Antigravity" etag="version1" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.9">
   <diagram id="pdm-diagram" name="PDM Perpustakaan">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1782" dy="1105" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="label_pdm" value="PDM (Physical Data Model) - Detailed" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="280" y="40" width="400" height="40" as="geometry" />
+        <mxCell id="label_pdm" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" value="PDM (Physical Data Model) - Detailed" vertex="1">
+          <mxGeometry height="40" width="400" x="280" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="pdm_users" value="users_perpus" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="40" y="120" width="240" height="182" as="geometry" />
+        <mxCell id="pdm_users" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="users_perpus" vertex="1">
+          <mxGeometry height="182" width="240" x="40" y="120" as="geometry" />
         </mxCell>
-        <mxCell id="u1" value="PK id (bigint, AI)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="26" width="240" height="26" as="geometry" />
+        <mxCell id="u1" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="PK id (bigint, AI)" vertex="1">
+          <mxGeometry height="26" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="u2" value="name (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="52" width="240" height="26" as="geometry" />
+        <mxCell id="u2" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="name (string)" vertex="1">
+          <mxGeometry height="26" width="240" y="52" as="geometry" />
         </mxCell>
-        <mxCell id="u3" value="username (string, UQ)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="78" width="240" height="26" as="geometry" />
+        <mxCell id="u3" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="username (string, UQ)" vertex="1">
+          <mxGeometry height="26" width="240" y="78" as="geometry" />
         </mxCell>
-        <mxCell id="u4" value="email (string, UQ)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="104" width="240" height="26" as="geometry" />
+        <mxCell id="u4" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="email (string, UQ)" vertex="1">
+          <mxGeometry height="26" width="240" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="u5" value="role (enum['admin','user'])" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="130" width="240" height="26" as="geometry" />
+        <mxCell id="u5" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="role (enum[&#39;admin&#39;,&#39;user&#39;])" vertex="1">
+          <mxGeometry height="26" width="240" y="130" as="geometry" />
         </mxCell>
-         <mxCell id="u6" value="password (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_users">
-          <mxGeometry y="156" width="240" height="26" as="geometry" />
+        <mxCell id="u6" parent="pdm_users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="password (string)" vertex="1">
+          <mxGeometry height="26" width="240" y="156" as="geometry" />
         </mxCell>
-        <mxCell id="pdm_peminjaman" value="peminjaman_buku" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="360" y="120" width="280" height="208" as="geometry" />
+        <mxCell id="pdm_peminjaman" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" value="peminjaman_buku" vertex="1">
+          <mxGeometry height="208" width="280" x="360" y="120" as="geometry" />
         </mxCell>
-        <mxCell id="p1" value="PK id (bigint, AI)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="26" width="280" height="26" as="geometry" />
+        <mxCell id="p1" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="PK id (bigint, AI)" vertex="1">
+          <mxGeometry height="26" width="280" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="p2" value="FK user_id (bigint)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="52" width="280" height="26" as="geometry" />
+        <mxCell id="p2" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="FK user_id (bigint)" vertex="1">
+          <mxGeometry height="26" width="280" y="52" as="geometry" />
         </mxCell>
-        <mxCell id="p3" value="FK buku_id (bigint)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="78" width="280" height="26" as="geometry" />
+        <mxCell id="p3" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="FK buku_id (bigint)" vertex="1">
+          <mxGeometry height="26" width="280" y="78" as="geometry" />
         </mxCell>
-        <mxCell id="p4" value="tanggal_pinjam (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="104" width="280" height="26" as="geometry" />
+        <mxCell id="p4" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="tanggal_pinjam (date)" vertex="1">
+          <mxGeometry height="26" width="280" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="p5" value="tanggal_kembali_rencana (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="130" width="280" height="26" as="geometry" />
+        <mxCell id="p5" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="gambar_buku(string)" vertex="1">
+          <mxGeometry height="26" width="280" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="p6" value="tanggal_kembali_aktual (date, null)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="156" width="280" height="26" as="geometry" />
+        <mxCell id="p6" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="tanggal_kembali_aktual (date, null)" vertex="1">
+          <mxGeometry height="26" width="280" y="156" as="geometry" />
         </mxCell>
-        <mxCell id="p7" value="status (enum['dipinjam','dikembalikan'])" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_peminjaman">
-          <mxGeometry y="182" width="280" height="26" as="geometry" />
+        <mxCell id="p7" parent="pdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="status (enum[&#39;dipinjam&#39;,&#39;dikembalikan&#39;])" vertex="1">
+          <mxGeometry height="26" width="280" y="182" as="geometry" />
         </mxCell>
-        <mxCell id="pdm_buku" value="buku" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="720" y="120" width="220" height="182" as="geometry" />
+        <mxCell id="pdm_buku" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="buku" vertex="1">
+          <mxGeometry height="182" width="220" x="740" y="110" as="geometry" />
         </mxCell>
-        <mxCell id="b1" value="PK id (bigint, AI)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="26" width="220" height="26" as="geometry" />
+        <mxCell id="b1" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="PK id (bigint, AI)" vertex="1">
+          <mxGeometry height="26" width="220" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="b2" value="judul (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="52" width="220" height="26" as="geometry" />
+        <mxCell id="b2" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="judul (string)" vertex="1">
+          <mxGeometry height="26" width="220" y="52" as="geometry" />
         </mxCell>
-        <mxCell id="b3" value="penulis (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="78" width="220" height="26" as="geometry" />
+        <mxCell id="b3" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="penulis (string)" vertex="1">
+          <mxGeometry height="26" width="220" y="78" as="geometry" />
         </mxCell>
-         <mxCell id="b4" value="penerbit (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="104" width="220" height="26" as="geometry" />
+        <mxCell id="b4" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="penerbit (string)" vertex="1">
+          <mxGeometry height="26" width="220" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="b5" value="stok (int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="130" width="220" height="26" as="geometry" />
+        <mxCell id="b5" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="stok (int)" vertex="1">
+          <mxGeometry height="26" width="220" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="b6" value="tahun_terbit (year)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="pdm_buku">
-          <mxGeometry y="156" width="220" height="26" as="geometry" />
+        <mxCell id="b6" parent="pdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="tahun_terbit (year)" vertex="1">
+          <mxGeometry height="26" width="220" y="156" as="geometry" />
         </mxCell>
-        <mxCell id="rel_user_pinjam" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" edge="1" parent="1" source="u1" target="p2">
+        <mxCell id="rel_user_pinjam" edge="1" parent="1" source="u1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" target="p2" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="300" y="159" />
@@ -82,7 +81,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel_buku_pinjam" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" edge="1" parent="1" source="b1" target="p3">
+        <mxCell id="rel_buku_pinjam" edge="1" parent="1" source="b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" target="p3" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="680" y="159" />
