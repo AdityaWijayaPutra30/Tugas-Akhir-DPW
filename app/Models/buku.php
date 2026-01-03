@@ -14,7 +14,8 @@ class buku extends Model
         'penulis',
         'penerbit',
         'stok',
-        'tahun_terbit'
+        'tahun_terbit',
+        'cover'
     ];
 
     public function buku(){

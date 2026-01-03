@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class BukuController extends Controller
 {
@@ -35,20 +37,25 @@ class BukuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:30' ,
-            'penulis' => 'required|string|max:30',
-            'penerbit'=> 'required|string|max:30',
-            'stok'=> 'required|integer|min:0',
-            'tahun_terbit' => 'required|date'
-        ]);
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'judul'        => 'required|string|max:255',
+        'penulis'      => 'required|string|max:255',
+        'penerbit'     => 'required|string|max:255',
+        'stok'         => 'required|integer|min:0',
+        'tahun_terbit' => 'required|date',
+        'cover'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        buku::create($request->all());
-        return redirect()->route('buku.index')->with('Success', 'Data berhasil ditambahkan!');
-
+    if ($request->hasFile('cover')) {
+        $validated['cover'] = $request->file('cover')->store('covers', 'public');
     }
+
+    buku::create($validated);
+
+    return redirect()->route('buku.create')->with('success', 'Berhasil disimpan!');
+}
 
     /**
      * Display the specified resource.
@@ -70,7 +77,7 @@ class BukuController extends Controller
     public function edit(buku $buku)
     {
 
-        return view('perpus.edit', compact('buku'));
+        return view('buku.edit', compact('buku'));
         // guna compat untuk ngambil id buku yang di klik dari url tampilan index
     }
 
@@ -81,19 +88,21 @@ class BukuController extends Controller
      * @param  \App\Models\buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, buku $buku)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:30' ,
-            'penulis' => 'required|string|max:30',
-            'penerbit'=> 'required|string|max:30',
-            'stok'=> 'required|integer|min:0',
-            'tahun_terbit' => 'required|date'
-        ]);
+public function update(Request $request, buku $buku)
+{
+    $validated = $request->validate([
+        'judul'        => 'required|string|max:30',
+        'penulis'      => 'required|string|max:30',
+        'penerbit'     => 'required|string|max:30',
+        'stok'         => 'required|integer|min:0',
+        'tahun_terbit' => 'required|date',
+        'cover'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        buku::update($request->all());
-        return redirect()->route('buku.index')->with('Success', 'Data berhasil diupdate!');
-    }
+    $buku->update($validated);
+
+    return redirect()->route('buku.create')->with('success', 'Data berhasil diupdate!');
+}
 
     /**
      * Remove the specified resource from storage.

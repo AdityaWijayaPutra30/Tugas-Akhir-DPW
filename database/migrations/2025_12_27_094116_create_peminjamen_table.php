@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('peminjamen', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('buku_id')->constrained()->onDelete('cascade');
+            $table->foreignId('buku_id')->constrained('buku')->onDelete('cascade');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->string('status')->default('dipinjam');

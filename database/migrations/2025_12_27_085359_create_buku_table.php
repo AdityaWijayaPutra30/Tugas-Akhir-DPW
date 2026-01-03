@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('penerbit');
             $table->integer('stok');
             $table->date('tahun_terbit');
+            $table->string('cover');
             $table->timestamps();
         });
     }
