@@ -23,13 +23,23 @@ Route::post('/login', [ControllerPerpus::class, 'prosesLogin'])->name('login.pro
 use App\Http\Controllers\UserDashboardController;
 
 // USER DASHBOARD
+Route::middleware('user')->group(function () {
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::get('/user/dashboard/top', [UserDashboardController::class, 'top'])->name('user.dashboard.top');
 Route::get('/user/dashboard/recent', [UserDashboardController::class, 'recent'])->name('user.dashboard.recent');
 Route::get('/user/dashboard/rating', [UserDashboardController::class, 'rating'])->name('user.dashboard.rating');
-Route::get('/admin/dashboard', function () {
-    return view('perpus.admindashboard');
-})->name('admin.dashboard');
+});
+
+// ADMIN DASHBOARD
+
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('perpus.admindashboard');
+    })->name('admin.dashboard');
+
+    Route::resource('buku', BukuController::class);
+});
+
 
 // REGISTER
 Route::get('/register', [ControllerPerpus::class, 'register'])->name('register');
@@ -39,7 +49,7 @@ Route::post('/register', [ControllerPerpus::class, 'storeRegister'])->name('regi
 Route::get('/forgot-password', [ControllerPerpus::class, 'forgotPassword'])->name('forgot.password');
 Route::post('/forgot-password', [ControllerPerpus::class, 'prosesForgotPassword'])->name('forgot.password.process');
 
-Route::resource('buku', BukuController::class);
+
 
 
 
