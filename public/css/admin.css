@@ -1,30 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
-    background-image: url("../assets/background_register.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../assets/background_register.png');
     background-size: cover;
     background-position: center;
-    background-position-y: 10px;
-    background-blend-mode: darken;
-    background-color: #000000bf;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    height: 100vh;
 }
 
 .container-admin {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    padding: 20px;
+    flex-direction: row;
 }
 
-.sidebar {
+.sidebar-admin {
     width: 350px;
     height: 100vh;
     background-color: #1a1a1a;
+    /* Same as body for seamless look, or slightly different if needed */
     color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    padding: 20px;
+    border-right: 1px solid #333;
+    /* Optional separation */
+    flex-shrink: 0;
 }
 
 .sidebar-container {
@@ -33,44 +37,70 @@ body {
     justify-content: center;
     align-items: center;
     padding-top: 6rem;
+    position: relative;
 }
 
 .logo img {
-    width: 200px;
-    border-radius: 300px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #ddd;
+    object-fit: cover;
 }
 
 .menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .menu ul li {
-    margin: 55px 0
+    margin: 30px 0;
 }
 
 .menu ul li a {
     text-decoration: none;
     color: #fff;
+    /* Default color */
     display: flex;
+    justify-content: center;
+    /* Center the text */
     align-items: center;
-}
-
-.menu ul li a img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    transition: color 0.3s ease;
 }
 
 .menu ul li a span {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
 }
 
+/* Hover State */
+.menu ul li a:hover {
+    color: #ccc;
+}
+
+/* Active State */
+.menu ul li a.active {
+    color: #ff0000;
+    /* Red active color as per request, or use theme color */
+}
+
+/* Logout specific */
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 2rem;
+    color: #fff;
+}
+
+/* Remove Jumbotron white block style if it persists in other files */
 .jumbotron {
-    margin-left: 350px;
-    width: calc(100% - 350px);
+    background: transparent;
+    color: #fff;
 }

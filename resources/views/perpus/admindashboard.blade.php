@@ -17,47 +17,49 @@
 </head>
 <body>
     <div class="container-admin">
-            <div class="sidebar">
-        <div class="sidebar-container">
-            <div class="logo">
-                <img src="{{ asset('assets/dashboard.png') }}" alt="Logo">
-            </div>
-            <div class="menu">
-                <ul>
-                <li>
-                    <a href="#">
-                        <span>Statistik</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span>Pengguna</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('buku.create') }}">
-                        <span>Tambah Buku</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span>Peminjaman</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="text-danger">Logout</span>
-                    </a>
-                </li>
-            </ul>
+        <div class="sidebar-admin">
+            <div class="sidebar-container">
+                <div class="logo">
+                    <img src="{{ asset('assets/dashboard.png') }}" alt="Logo">
+                </div>
+                <div class="menu">
+                    <ul>
+                    <li>
+                        <a href="#">
+                            <span>Statistik</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('buku.create') }}">
+                            <span>Tambah Buku</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Peminjaman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="text-danger">Logout</span>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+        <div class="jumbotron">
+            <h1>Admin Dashboard</h1>
         </div>
     </div>
 
 
-    <div class="jumbotron">
-        <h1>Admin Dashboard</h1>
-    </div>
-    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
