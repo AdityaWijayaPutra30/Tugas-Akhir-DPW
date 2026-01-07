@@ -34,19 +34,19 @@ Route::get('/user/dashboard/rating', [UserDashboardController::class, 'rating'])
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('perpus.statistik');
+        return view('admin.statistik');
     })->name('admin.dashboard');
 
     Route::get('/admin/pengguna', function () {
-        return view('perpus.pengguna');
+        return view('admin.pengguna');
     })->name('admin.pengguna');
 
     Route::get('/admin/buku', function () {
-        return view('perpus.buku');
+        return view('admin.buku');
     })->name('admin.buku');
 
     Route::get('/admin/peminjaman', function () {
-        return view('perpus.peminjaman');
+        return view('admin.peminjaman');
     })->name('admin.peminjaman');
 
     // Route::resource('buku', BukuController::class); // Commented out to focus on UI

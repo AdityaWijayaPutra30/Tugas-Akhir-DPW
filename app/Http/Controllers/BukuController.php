@@ -28,7 +28,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('perpus.create');
+        return view('admin.create');
     }
 
     /**
