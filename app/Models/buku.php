@@ -18,7 +18,7 @@ class buku extends Model
         'cover'
     ];
 
-    public function buku(){
+    public function peminjaman(){
         return $this->hasMany(peminjaman::class);
     }
 }

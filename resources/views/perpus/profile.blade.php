@@ -57,9 +57,9 @@
 
     <div class="container mt-5" style="padding-top: 6rem;">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col">
                 <div class="card shadow">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-dark text-white">
                         <h4 class="mb-0">Profil Pengguna</h4>
                     </div>
                     <div class="card-body">
