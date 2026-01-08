@@ -28,6 +28,7 @@ Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('
 Route::get('/user/dashboard/top', [UserDashboardController::class, 'top'])->name('user.dashboard.top');
 Route::get('/user/dashboard/recent', [UserDashboardController::class, 'recent'])->name('user.dashboard.recent');
 Route::get('/user/dashboard/rating', [UserDashboardController::class, 'rating'])->name('user.dashboard.rating');
+Route::get('/user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
 });
 
 // ADMIN DASHBOARD
@@ -60,6 +61,9 @@ Route::post('/register', [ControllerPerpus::class, 'storeRegister'])->name('regi
 // LUPA PASSWORD
 Route::get('/forgot-password', [ControllerPerpus::class, 'forgotPassword'])->name('forgot.password');
 Route::post('/forgot-password', [ControllerPerpus::class, 'prosesForgotPassword'])->name('forgot.password.process');
+
+// LOGOUT
+Route::get('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
 
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\buku;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class UserDashboardController extends Controller
 {
@@ -48,6 +50,16 @@ class UserDashboardController extends Controller
             'title' => 'Buku Berdasarkan Peringkat',
             'active' => 'rating',
             'emptyMessage' => 'Belum ada data rating.'
+        ]);
+    }
+
+    public function profile()
+    {
+        $user = User::where('id', session('user_id'))->first();
+        return view('perpus.profile', [
+            'user' => $user,
+            'title' => 'Profil Pengguna',
+            'active' => 'profile' 
         ]);
     }
 }

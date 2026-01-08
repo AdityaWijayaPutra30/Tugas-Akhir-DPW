@@ -123,4 +123,15 @@ class ControllerPerpus extends Controller
 
         return redirect('/login')->with('success', 'Password berhasil diubah, silakan login dengan password baru');
     }
+
+    // PROSES LOGOUT
+    public function logout()
+    {
+        Session::forget('login');
+        Session::forget('user_id');
+        Session::forget('role');
+        Session::forget('username');
+        
+        return redirect()->route('login')->with('success', 'Berhasil logout');
+    }
 }
