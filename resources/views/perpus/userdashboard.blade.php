@@ -34,7 +34,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">YuBook</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -97,7 +97,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container mt-5">
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -118,6 +118,11 @@
             @forelse($books as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm border-0">
+                    <img
+                        src="{{ $book->cover ? Storage::url($book->cover) : asset('assets/placeholder.png') }}"
+                        class="card-img-top"
+                        alt="Cover {{ $book->judul }}"
+                        style="height:220px; object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $book->judul }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $book->penulis }}</h6>
@@ -136,7 +141,7 @@
             @endforelse
         </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
