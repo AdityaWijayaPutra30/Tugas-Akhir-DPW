@@ -69,4 +69,3 @@ Route::get('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
 
 
 
-

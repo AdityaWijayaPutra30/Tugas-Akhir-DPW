@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard Pengguna - {{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -34,7 +34,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">YuBook</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -94,13 +94,18 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container mt-5">
         <h3 class="mb-4">{{ $title }}</h3>
         <div class="row">
             @forelse($books as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm border-0">
+                    <img
+                        src="{{ $book->cover ? Storage::url($book->cover) : asset('assets/placeholder.png') }}"
+                        class="card-img-top"
+                        alt="Cover {{ $book->judul }}"
+                        style="height:220px; object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $book->judul }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $book->penulis }}</h6>
@@ -115,7 +120,7 @@
             @endforelse
         </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
