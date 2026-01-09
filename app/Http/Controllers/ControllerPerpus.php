@@ -89,10 +89,10 @@ public function logout(Request $request)
         $request->validate([
             'name' => 'required',
             'username' => 'required|unique:users_perpus,username',
-            'email' => ['required', 'email', 'unique:users_perpus,email', 'regex:/(.*)@(gmail\.com|yahoo\.com)$/i'],
+            'email' => 'required|email|unique:users_perpus,email|ends_with:@gmail.com,@yahoo.com',
             'password' => 'required|min:8',
         ], [
-            'email.regex' => 'Email harus menggunakan domain @gmail.com atau @yahoo.com',
+            'email.ends_with' => 'Email harus menggunakan domain @gmail.com atau @yahoo.com',
         ]);
 
         // nyimpen ke database
