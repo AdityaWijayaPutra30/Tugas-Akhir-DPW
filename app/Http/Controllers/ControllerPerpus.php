@@ -47,28 +47,39 @@ public function logout(Request $request)
         // gunanya buat cari user berdasarkan username
         $user = User::where('username', $request->username)->first();
 
-        // ini buat cek user & password
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return back()->with('error', 'Username atau password salah');
+        // 1. Cek login sebagai Regular User / Admin (Tabel users_perpus)
+        if ($user && Hash::check($request->password, $user->password)) {
+            // buat nyimpen session
+            Session::put('login', true);
+            Session::put('user_id', $user->id);
+            Session::put('role', $user->role);
+            Session::put('username', $user->username);
+
+            // redirect berdasarkan role
+            if ($user->role === 'user') {
+                return redirect()->route('user.home');
+            }
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
         }
 
-        // buat nyimpen session
-        Session::put('login', true);
-        Session::put('user_id', $user->id);
-        Session::put('role', $user->role);
-        Session::put('username', $user->username);
+        // 2. Cek login sebagai Developer (Tabel developers)
+        // Gunakan model developer (\App\Models\developer)
+        $developer = \App\Models\developer::where('username', $request->username)->first();
 
-        // redirect berdasarkan role
-        if ($user->role === 'user') {
-            return redirect()->route('user.home');
+        if ($developer && Hash::check($request->password, $developer->password)) {
+             // buat nyimpen session developer
+            Session::put('login', true);
+            Session::put('user_id', $developer->id);
+            Session::put('role', $developer->role);
+            Session::put('username', $developer->username);
+
+            return redirect()->route('developer.dashboard');
         }
-        if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard');
-        }
 
-
-        // kalau nanti ada admin
-        return redirect('/login');
+        // Jika tidak ditemukan di kedua tabel
+        return back()->with('error', 'Username atau password salah');
     }
 
     // proses register
@@ -78,8 +89,10 @@ public function logout(Request $request)
         $request->validate([
             'name' => 'required',
             'username' => 'required|unique:users_perpus,username',
-            'email' => 'required|email|unique:users_perpus,email',
-            'password' => 'required|min:3',
+            'email' => ['required', 'email', 'unique:users_perpus,email', 'regex:/(.*)@(gmail\.com|yahoo\.com)$/i'],
+            'password' => 'required|min:8',
+        ], [
+            'email.regex' => 'Email harus menggunakan domain @gmail.com atau @yahoo.com',
         ]);
 
         // nyimpen ke database
@@ -135,14 +148,5 @@ public function logout(Request $request)
         return redirect('/login')->with('success', 'Password berhasil diubah, silakan login dengan password baru');
     }
 
-    // PROSES LOGOUT
-    public function logout()
-    {
-        Session::forget('login');
-        Session::forget('user_id');
-        Session::forget('role');
-        Session::forget('username');
-        
-        return redirect()->route('login')->with('success', 'Berhasil logout');
-    }
+
 }

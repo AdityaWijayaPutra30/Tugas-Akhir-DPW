@@ -59,6 +59,14 @@ Route::middleware('admin')->group(function () {
     Route::resource('buku', BukuController::class);
 });
 
+// DEVELOPER DASHBOARD
+use App\Http\Controllers\DeveloperDashboardController;
+
+Route::middleware('developer')->group(function () {
+    Route::get('/developer/dashboard', [DeveloperDashboardController::class, 'index'])->name('developer.dashboard');
+});
+
+
 
 // REGISTER
 Route::get('/register', [ControllerPerpus::class, 'register'])->name('register');
