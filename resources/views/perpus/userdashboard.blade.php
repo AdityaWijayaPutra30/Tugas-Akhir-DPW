@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard Pengguna - {{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -31,7 +33,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">YuBook</a>
+            <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,18 +41,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto text-start text-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Beranda</a>
+                        <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link {{ $active == 'about' ? 'active' : '' }}" href="{{ route('user.about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}" href="{{ route('user.contact') }}">Contact</a>
                     </li>
                 </ul>
 
                 <div class="ms-lg-auto mt-2 mt-lg-0">
-                    <a href="#" class="text-decoration-none text-light">Username</a>
+                    <i class="fa-solid fa-user text-light me-2"></i>
+                    <a href="{{ route('user.profile') }}" class="text-decoration-none text-light">{{ session('username') ?? 'Guest' }}</a>
                 </div>
             </div>
         </div>
@@ -72,16 +78,19 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-link dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
+                            Kategori
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {{ $active == 'top' ? 'active' : '' }}" href="{{ route('user.dashboard.top') }}">Populer</a></li>
-                            <li><a class="dropdown-item {{ $active == 'recent' ? 'active' : '' }}" href="{{ route('user.dashboard.recent') }}">Terbaru</a></li>
-                            <li><a class="dropdown-item {{ $active == 'rating' ? 'active' : '' }}" href="{{ route('user.dashboard.rating') }}">Peringkat</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'manga' ? 'active' : '' }}" href="{{ route('user.dashboard', 'manga') }}">Manga</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'novel' ? 'active' : '' }}" href="{{ route('user.dashboard', 'novel') }}">Novel</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'pengetahuan' ? 'active' : '' }}" href="{{ route('user.dashboard', 'pengetahuan') }}">Pengetahuan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-link">
-                        <a class="nav-link {{ $active == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
+                        <a class="nav-link {{ $activeDashboard == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
+                    </li>
+                    <li class="nav-item nav-link">
+                        <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -91,17 +100,40 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container mt-5">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <h3 class="mb-4">{{ $title }}</h3>
         <div class="row">
             @forelse($books as $book)
             <div class="col-md-3 mb-4">
                 <div class="card h-100 shadow-sm border-0">
+                    <img
+                        src="{{ $book->cover ? Storage::url($book->cover) : asset('assets/placeholder.png') }}"
+                        class="card-img-top"
+                        alt="Cover {{ $book->judul }}"
+                        style="height:220px; object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">{{ $book->judul }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $book->penulis }}</h6>
                         <p class="card-text">{{ $book->penerbit }}</p>
+                        <form action="{{ route('user.borrow', $book->id) }}" method="POST" onsubmit="return confirm('Yakin ingin meminjam buku ini?')">
+                            @csrf
+                            <button type="submit" class="btn btn-primary w-100">Pinjam</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -112,7 +144,7 @@
             @endforelse
         </div>
     </div>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 

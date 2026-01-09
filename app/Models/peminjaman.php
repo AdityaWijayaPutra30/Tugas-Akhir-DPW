@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class peminjaman extends Model
 {
     use HasFactory;
-    protected $table = 'peminjaman';
+    protected $table = 'peminjamen';
     protected $fillable = [
         'user_id',
         'buku_id',
@@ -18,11 +18,11 @@ class peminjaman extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(buku::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function buku(){
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(buku::class, 'buku_id');
     }
 
 }

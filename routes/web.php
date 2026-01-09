@@ -27,10 +27,14 @@ use App\Http\Controllers\UserDashboardController;
 
 // USER DASHBOARD
 Route::middleware('user')->group(function () {
-Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-Route::get('/user/dashboard/top', [UserDashboardController::class, 'top'])->name('user.dashboard.top');
-Route::get('/user/dashboard/recent', [UserDashboardController::class, 'recent'])->name('user.dashboard.recent');
-Route::get('/user/dashboard/rating', [UserDashboardController::class, 'rating'])->name('user.dashboard.rating');
+Route::get('/user/home', [UserDashboardController::class, 'landing'])->name('user.home');
+Route::get('/user/dashboard/{kategori?}', [UserDashboardController::class, 'index'])->name('user.dashboard');
+Route::get('/user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
+Route::get('/user/dipinjam', [UserDashboardController::class, 'dipinjam'])->name('user.dipinjam');
+Route::get('/user/about', [UserDashboardController::class, 'about'])->name('user.about');
+Route::get('/user/contact', [UserDashboardController::class, 'contact'])->name('user.contact');
+Route::post('/user/borrow/{id}', [UserDashboardController::class, 'borrow'])->name('user.borrow');
+Route::delete('/user/cancel/{id}', [UserDashboardController::class, 'cancelBorrow'])->name('user.cancel');
 });
 
 // ADMIN DASHBOARD
@@ -64,6 +68,8 @@ Route::post('/register', [ControllerPerpus::class, 'storeRegister'])->name('regi
 Route::get('/forgot-password', [ControllerPerpus::class, 'forgotPassword'])->name('forgot.password');
 Route::post('/forgot-password', [ControllerPerpus::class, 'prosesForgotPassword'])->name('forgot.password.process');
 
+// LOGOUT
+Route::get('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
 
 
 
