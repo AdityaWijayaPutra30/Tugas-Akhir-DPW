@@ -18,6 +18,17 @@ class ControllerPerpus extends Controller
         return view('perpus.login');
     }
 
+    // LOGOUT
+public function logout(Request $request)
+{
+    Session::flush();                 // gunanya buathapus semua session
+    $request->session()->invalidate(); // invalidasi atau mengakhiri session
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login');
+}
+
+
     // tampil register
     public function register()
     {
@@ -33,15 +44,15 @@ class ControllerPerpus extends Controller
             'password' => 'required'
         ]);
 
-        // cari user berdasarkan username
+        // gunanya buat cari user berdasarkan username
         $user = User::where('username', $request->username)->first();
 
-        // cek user & password
+        // ini buat cek user & password
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Username atau password salah');
         }
 
-        // simpan session
+        // buat nyimpen session
         Session::put('login', true);
         Session::put('user_id', $user->id);
         Session::put('role', $user->role);
@@ -71,7 +82,7 @@ class ControllerPerpus extends Controller
             'password' => 'required|min:3',
         ]);
 
-        // simpan ke database
+        // nyimpen ke database
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -98,7 +109,7 @@ class ControllerPerpus extends Controller
             'username' => 'required',
             'email' => 'required|email',
             'password_lama' => 'required',
-            'password_baru' => 'required|min:3',
+            'password_baru' => 'required|min:8',
         ]);
 
         // Cari user

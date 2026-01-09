@@ -45,13 +45,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('logout') }}">
                             <span class="text-danger">Logout</span>
                         </a>
                     </li>
                     </ul>
                 </div>
-            </div>  
+            </div>
         </div>
         <div class="jumbotron">
             <h1>Admin Dashboard</h1>

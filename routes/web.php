@@ -19,6 +19,9 @@ use App\Http\Controllers\ControllerPerpus;
 Route::get('/', [ControllerPerpus::class, 'login']);
 Route::get('/login', [ControllerPerpus::class, 'login'])->name('login');
 Route::post('/login', [ControllerPerpus::class, 'prosesLogin'])->name('login.process');
+//LOGOUT
+Route::post('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
+
 
 use App\Http\Controllers\UserDashboardController;
 
@@ -49,7 +52,7 @@ Route::middleware('admin')->group(function () {
         return view('admin.peminjaman');
     })->name('admin.peminjaman');
 
-    // Route::resource('buku', BukuController::class); // Commented out to focus on UI
+    Route::resource('buku', BukuController::class);
 });
 
 
