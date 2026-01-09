@@ -10,47 +10,32 @@ use Illuminate\Support\Facades\Session;
 
 class UserDashboardController extends Controller
 {
-    public function index()
+    public function landing()
     {
-        $books = buku::all(); // Mengambil semua buku
-        return view('perpus.userdashboard', [
-            'books' => $books,
-            'title' => 'Semua Buku',
-            'active' => 'all',
-            'emptyMessage' => 'Tidak ada buku tersedia.'
+        return view('perpus.landing', [
+            'title' => 'Beranda',
+            'active' => 'home'
         ]);
     }
 
-    public function top()
+    public function index($kategori = null)
     {
-        $books = buku::all(); 
-        return view('perpus.userdashboard', [
-            'books' => $books,
-            'title' => 'Buku Terpopuler',
-            'active' => 'top',
-            'emptyMessage' => 'Belum ada buku populer.'
-        ]);
-    }
+        if ($kategori) {
+            $books = buku::where('kategori', 'LIKE', $kategori)->get();
+            $title = 'Kategori: ' . ucfirst($kategori);
+            $activeDashboard = strtolower($kategori);
+        } else {
+            $books = buku::all();
+            $title = 'Semua Buku';
+            $activeDashboard = 'all';
+        }
 
-    public function recent()
-    {
-        $books = buku::all(); 
         return view('perpus.userdashboard', [
             'books' => $books,
-            'title' => 'Buku Terbaru',
-            'active' => 'recent',
-            'emptyMessage' => 'Belum ada buku terbaru.'
-        ]);
-    }
-
-    public function rating()
-    {
-        $books = buku::all();
-        return view('perpus.userdashboard', [
-            'books' => $books,
-            'title' => 'Buku Berdasarkan Peringkat',
-            'active' => 'rating',
-            'emptyMessage' => 'Belum ada data rating.'
+            'title' => $title,
+            'active' => 'dashboard', // Main nav active state
+            'activeDashboard' => $activeDashboard, // Sub nav (categories) active state
+            'emptyMessage' => 'Tidak ada buku tersedia dalam kategori ini.'
         ]);
     }
 

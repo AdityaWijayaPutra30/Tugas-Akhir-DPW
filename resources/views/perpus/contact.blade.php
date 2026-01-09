@@ -40,7 +40,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-user">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('user.dashboard') }}">YuBook</a>
+            <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,19 +48,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto text-start text-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.dashboard') }}">Beranda</a>
+                        <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.about') }}">About</a>
+                        <a class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('user.contact') }}">Contact</a>
+                        <a class="nav-link {{ $active == 'about' ? 'active' : '' }}" href="{{ route('user.about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}" href="{{ route('user.contact') }}">Contact</a>
                     </li>
                 </ul>
 
                 <div class="ms-lg-auto mt-2 mt-lg-0">
                     <i class="fa-solid fa-user text-light me-2"></i>
-                    <span class="text-light">{{ session('username') ?? 'Guest' }}</span>
+                    <a href="{{ route('user.profile') }}" class="text-decoration-none text-light">{{ session('username') ?? 'Guest' }}</a>
                 </div>
             </div>
         </div>
@@ -102,7 +105,7 @@
                             <input type="email" class="form-control" placeholder="nama@perusahaan.com">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Pesan</label>
+                            <label class="form-label">Pesan</   >
                             <textarea class="form-control" rows="4" placeholder="Tuliskan pesan Anda"></textarea>
                         </div>
                         <button type="submit" class="btn btn-custom w-100">Kirim Pesan</button>

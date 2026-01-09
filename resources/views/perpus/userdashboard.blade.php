@@ -33,7 +33,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">YuBook</a>
+            <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,13 +41,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto text-start text-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Beranda</a>
+                        <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.about') }}">About</a>
+                        <a class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.contact') }}">Contact</a>
+                        <a class="nav-link {{ $active == 'about' ? 'active' : '' }}" href="{{ route('user.about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}" href="{{ route('user.contact') }}">Contact</a>
                     </li>
                 </ul>
 
@@ -75,16 +78,16 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-link dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
+                            Kategori
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {{ $active == 'top' ? 'active' : '' }}" href="{{ route('user.dashboard.top') }}">Populer</a></li>
-                            <li><a class="dropdown-item {{ $active == 'recent' ? 'active' : '' }}" href="{{ route('user.dashboard.recent') }}">Terbaru</a></li>
-                            <li><a class="dropdown-item {{ $active == 'rating' ? 'active' : '' }}" href="{{ route('user.dashboard.rating') }}">Peringkat</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'manga' ? 'active' : '' }}" href="{{ route('user.dashboard', 'manga') }}">Manga</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'novel' ? 'active' : '' }}" href="{{ route('user.dashboard', 'novel') }}">Novel</a></li>
+                            <li><a class="dropdown-item {{ $activeDashboard == 'pengetahuan' ? 'active' : '' }}" href="{{ route('user.dashboard', 'pengetahuan') }}">Pengetahuan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-link">
-                        <a class="nav-link {{ $active == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
+                        <a class="nav-link {{ $activeDashboard == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
                     </li>
                     <li class="nav-item nav-link">
                         <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>

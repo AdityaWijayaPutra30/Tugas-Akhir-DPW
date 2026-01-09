@@ -29,7 +29,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('user.dashboard') }}">YuBook</a>
+            <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,19 +37,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto text-start text-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.dashboard') }}">Beranda</a>
+                        <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link {{ $active == 'about' ? 'active' : '' }}" href="{{ route('user.about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}" href="{{ route('user.contact') }}">Contact</a>
                     </li>
                 </ul>
 
                 <div class="ms-lg-auto mt-2 mt-lg-0">
                     <i class="fa-solid fa-user text-light me-2"></i>
-                    <a href="#" class="text-decoration-none text-light">{{ session('username') ?? 'Guest' }}</a>
+                    <a href="{{ route('user.profile') }}" class="text-decoration-none text-light">{{ session('username') ?? 'Guest' }}</a>
                 </div>
             </div>
         </div>
@@ -97,7 +100,7 @@
                         </form>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ route('user.dashboard') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-secondary">Kembali</a>
                         <a href="{{ route('logout') }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin logout?')">Logout</a>
                     </div>
                 </div>

@@ -103,6 +103,17 @@
             padding: 50px;
             color: #666;
         }
+
+        .jumbotron-user {
+            background-image: url("{{ asset('assets/background_home.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-color: #000000b3;
+            background-blend-mode: darken;
+            height: 400px;
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -110,7 +121,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">YuBook</a>
+            <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -118,13 +129,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-lg-auto text-start text-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.dashboard') }}">Beranda</a>
+                        <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.about') }}">About</a>
+                        <a class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('user.contact') }}">Contact</a>
+                        <a class="nav-link {{ $active == 'about' ? 'active' : '' }}" href="{{ route('user.about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}" href="{{ route('user.contact') }}">Contact</a>
                     </li>
                 </ul>
 
@@ -136,6 +150,14 @@
         </div>
     </nav>
 
+
+    <div class="jumbotron-user text-white text-center">
+        <div class="jumbotron py-auto container">
+            <h1 class="display-4 fw-semibold">Selamat Datang di YuBook</h1>
+        </div>
+    </div>
+
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,16 +167,16 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-link dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
+                            Kategori
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {{ $active == 'top' ? 'active' : '' }}" href="{{ route('user.dashboard.top') }}">Populer</a></li>
-                            <li><a class="dropdown-item {{ $active == 'recent' ? 'active' : '' }}" href="{{ route('user.dashboard.recent') }}">Terbaru</a></li>
-                            <li><a class="dropdown-item {{ $active == 'rating' ? 'active' : '' }}" href="{{ route('user.dashboard.rating') }}">Peringkat</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.dashboard', 'manga') }}">Manga</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.dashboard', 'novel') }}">Novel</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.dashboard', 'pengetahuan') }}">Pengetahuan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-link">
-                        <a class="nav-link {{ $active == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
+                        <a class="nav-link" href="{{ route('user.dashboard') }}">Semua</a>
                     </li>
                     <li class="nav-item nav-link">
                         <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>

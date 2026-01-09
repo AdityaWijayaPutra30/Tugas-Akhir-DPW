@@ -49,7 +49,7 @@ class ControllerPerpus extends Controller
 
         // redirect berdasarkan role
         if ($user->role === 'user') {
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.home');
         }
         if ($user->role === 'admin') {
             return redirect()->route('admin.dashboard');
