@@ -23,6 +23,7 @@ class BukuSeeder extends Seeder
                 'penerbit'     => 'Yuga Pratama',
                 'stok'         => 10,
                 'tahun_terbit' => '2020-06-10',
+                'kategori'     => 'Manga',
                 'cover'        => 'covers/aot33.jpg',
             ]
         );
@@ -34,7 +35,20 @@ class BukuSeeder extends Seeder
                 'penerbit'     => 'Yuga lagi aja',
                 'stok'         => 123,
                 'tahun_terbit' => '2024-01-02',
+                'kategori'     => 'Novel',
                 'cover'        => 'covers/naruto.jpeg',
+            ]
+        );
+        buku::updateOrCreate(
+            ['id' => 3],
+            [
+                'judul'        => 'Ilmu Pengetaahuan Alam',
+                'penulis'      => 'Wijay',
+                'penerbit'     => 'Wijay Lagi',
+                'stok'         => 2,
+                'tahun_terbit' => '2017-06-20',
+                'kategori'     => 'Pengetahuan',
+                'cover'        => 'covers/ipa.jpg',
             ]
         );
     }

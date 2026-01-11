@@ -56,8 +56,8 @@ Route::middleware('admin')->group(function () {
         return view('admin.peminjaman');
     })->name('admin.peminjaman');
 
-    Route::resource('buku', BukuController::class);
 });
+Route::resource('buku', BukuController::class);
 
 // DEVELOPER DASHBOARD
 use App\Http\Controllers\DeveloperDashboardController;

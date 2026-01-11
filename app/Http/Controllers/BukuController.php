@@ -45,6 +45,7 @@ public function store(Request $request)
         'penerbit'     => 'required|string|max:255',
         'stok'         => 'required|integer|min:0',
         'tahun_terbit' => 'required|date',
+        'kategori'     => 'required|in:Manga,Novel,Pengetahuan',
         'cover'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
     ]);
 
