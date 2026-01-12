@@ -26,7 +26,7 @@ Route::post('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
 use App\Http\Controllers\UserDashboardController;
 
 // USER DASHBOARD
-Route::middleware('user')->group(function () {
+Route::middleware(['user', 'prevent-back-history'])->group(function () {
 Route::get('/user/home', [UserDashboardController::class, 'landing'])->name('user.home');
 Route::get('/user/dashboard/{kategori?}', [UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::get('/user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');
@@ -38,23 +38,16 @@ Route::delete('/user/cancel/{id}', [UserDashboardController::class, 'cancelBorro
 });
 
 // ADMIN DASHBOARD
+use App\Http\Controllers\AdminController;
 
-Route::middleware('admin')->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.statistik');
-    })->name('admin.dashboard');
+Route::middleware(['admin', 'prevent-back-history'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/admin/pengguna', function () {
-        return view('admin.pengguna');
-    })->name('admin.pengguna');
+    Route::get('/admin/pengguna', [AdminController::class, 'pengguna'])->name('admin.pengguna');
 
-    Route::get('/admin/buku', function () {
-        return view('admin.buku');
-    })->name('admin.buku');
+    Route::get('/admin/buku', [AdminController::class, 'buku'])->name('admin.buku');
 
-    Route::get('/admin/peminjaman', function () {
-        return view('admin.peminjaman');
-    })->name('admin.peminjaman');
+    Route::get('/admin/peminjaman', [AdminController::class, 'peminjaman'])->name('admin.peminjaman');
 
 });
 Route::resource('buku', BukuController::class);
@@ -62,7 +55,7 @@ Route::resource('buku', BukuController::class);
 // DEVELOPER DASHBOARD
 use App\Http\Controllers\DeveloperDashboardController;
 
-Route::middleware('developer')->group(function () {
+Route::middleware(['developer', 'prevent-back-history'])->group(function () {
     Route::get('/developer/dashboard', [DeveloperDashboardController::class, 'index'])->name('developer.dashboard');
 });
 

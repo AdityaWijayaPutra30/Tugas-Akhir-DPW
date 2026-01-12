@@ -19,6 +19,9 @@
                 <div class="menu">
                     <ul>
                         <li>
+                            <h1>{{ session('username') ?? 'Guest' }}</h1>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                                 <span>Statistik</span>
                             </a>
@@ -39,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('logout') }}" onclick="return confirm('Apakah Anda yakin ingin logout?')">
                                 <span class="text-danger">Logout</span>
                             </a>
                         </li>
