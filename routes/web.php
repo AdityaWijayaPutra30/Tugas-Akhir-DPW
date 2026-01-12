@@ -53,10 +53,25 @@ Route::middleware(['admin', 'prevent-back-history'])->group(function () {
 Route::resource('buku', BukuController::class);
 
 // DEVELOPER DASHBOARD
-use App\Http\Controllers\DeveloperDashboardController;
+use App\Http\Controllers\DeveloperController;
 
 Route::middleware(['developer', 'prevent-back-history'])->group(function () {
-    Route::get('/developer/dashboard', [DeveloperDashboardController::class, 'index'])->name('developer.dashboard');
+    Route::get('/developer/dashboard', [DeveloperController::class, 'index'])->name('developer.dashboard');
+    Route::get('/developer/statistik', [DeveloperController::class, 'statistik'])->name('developer.statistik');
+    Route::get('/developer/pengguna', [DeveloperController::class, 'pengguna'])->name('developer.pengguna');
+    Route::get('/developer/pengguna/{id}/edit', [DeveloperController::class, 'editPengguna'])->name('developer.edit_pengguna');
+    Route::put('/developer/pengguna/{id}', [DeveloperController::class, 'updatePengguna'])->name('developer.update_pengguna');
+    Route::delete('/developer/pengguna/{id}', [DeveloperController::class, 'destroyPengguna'])->name('developer.destroy_pengguna');
+    
+    // Admin Management
+    Route::get('/developer/admin', [DeveloperController::class, 'admin'])->name('developer.admin');
+    Route::get('/developer/admin/{id}/edit', [DeveloperController::class, 'editAdmin'])->name('developer.edit_admin');
+    Route::put('/developer/admin/{id}', [DeveloperController::class, 'updateAdmin'])->name('developer.update_admin');
+    Route::delete('/developer/admin/{id}', [DeveloperController::class, 'destroyAdmin'])->name('developer.destroy_admin');
+
+    // Read-only Data Pages
+    Route::get('/developer/buku', [DeveloperController::class, 'buku'])->name('developer.buku');
+    Route::get('/developer/peminjaman', [DeveloperController::class, 'peminjaman'])->name('developer.peminjaman');
 });
 
 
