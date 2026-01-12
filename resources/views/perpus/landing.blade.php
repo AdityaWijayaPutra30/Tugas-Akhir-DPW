@@ -59,7 +59,7 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
             }
             33% {
-                transform: translateY(-20px) translateX(10px) rotate(2deg);
+                transform: translateY(-20px) translateX(1   0px) rotate(2deg);
             }
             66% {
                 transform: translateY(-10px) translateX(-10px) rotate(-2deg);

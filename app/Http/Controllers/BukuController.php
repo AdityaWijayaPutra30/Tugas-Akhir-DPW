@@ -54,7 +54,7 @@ public function store(Request $request)
 
     buku::create($validated);
 
-    return redirect()->route('buku.create')->with('success', 'Berhasil disimpan!');
+    return redirect()->route('admin.buku')->with('success', 'Berhasil disimpan!');
 }
 
     /**
@@ -113,6 +113,6 @@ public function update(Request $request, buku $buku)
     public function destroy(buku $buku)
     {
         $buku->delete();
-        return redirect()->route('buku.index')->with('Success', 'Data berhasil dihapus!');
+        return redirect()->route('admin.buku')->with('Success', 'Data berhasil dihapus!');
     }
 }

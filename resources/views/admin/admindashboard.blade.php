@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}">
+                        <a href="{{ route('logout') }}" onclick="return confirm('Apakah Anda yakin ingin logout?')">
                             <span class="text-danger">Logout</span>
                         </a>
                     </li>
