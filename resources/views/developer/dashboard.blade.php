@@ -31,17 +31,17 @@
                     </li>
                     <li>
                         <a href="#">
-                            <span>Pengguna</span>
+                            <span>Edit Pengguna</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <span>Tambah Buku</span>
+                            <span>Data Buku</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <span>Peminjaman</span>
+                            <span>Data Peminjaman</span>
                         </a>
                     </li>
                     <li>
