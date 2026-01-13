@@ -25,17 +25,29 @@
         }
 
         .jumbotron-user {
-            background-image: url("{{ asset('assets/background_home.png') }}");
-            background-size: cover;
-            background-position-y: -100px   ;
-            background-color: #000000b3;
-            background-blend-mode: darken;
-            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
             min-height: 500px;
             height: auto;
             padding: 100px 0;
             display: flex;
             align-items: center;
+        }
+
+        .jumbotron-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{{ asset('assets/background_home.png') }}");
+            background-size: cover;
+            background-position-y: -100px;
+            background-color: #000000b3;
+            background-blend-mode: darken;
+            background-attachment: fixed;
+            z-index: -1;
+            transition: transform 0.1s linear;
         }
     </style>
 </head>
@@ -75,8 +87,9 @@
 
 
     <div class="jumbotron-user text-white text-center">
+        <div class="jumbotron-bg" id="jumbotronBg"></div>
         <div class="jumbotron py-auto container">
-            <h1 class="display-4 fw-semibold">Selamat Datang di YuBook</h1>
+            <h1 class="display-4 fw-semibold">Selamat Datang di <span class="text-warning">YuBook</span></h1>
         </div>
     </div>
 
@@ -144,7 +157,7 @@
                         <p class="card-text">{{ $book->penerbit }}</p>
                         <form action="{{ route('user.borrow', $book->id) }}" method="POST" onsubmit="return confirm('Yakin ingin meminjam buku ini?')" class="mt-auto">
                             @csrf
-                            <button type="submit" class="btn btn-primary w-100">Pinjam</button>
+                            <button type="submit" class="btn btn-success w-100">Pinjam</button>
                         </form>
                     </div>
                 </div>
@@ -167,7 +180,18 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollValue = window.scrollY;
+            const jumbotronBg = document.getElementById('jumbotronBg');
+            
+            // Only zoom if the jumbotron is visible (scroll is less than its height)
+            if (scrollValue < 600) {
+                const scale = 1 + (scrollValue / 2000);
+                jumbotronBg.style.transform = `scale(${scale})`;
+            }
+        });
+    </script>
 </body>
 
 </html>

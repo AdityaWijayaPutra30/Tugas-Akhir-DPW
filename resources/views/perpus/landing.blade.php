@@ -10,12 +10,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
 
-        body{
+        body {
             background-image: url("{{ asset('assets/background_home.png') }}");
             background-size: cover;
             background-position: center;
             background-color: #000000b3;
             background-blend-mode: darken;
+            background-attachment: fixed;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #fff;
         }
         
         .jumbotron {
@@ -83,7 +91,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('user.home') }}">YuBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
