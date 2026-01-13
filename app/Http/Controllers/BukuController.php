@@ -45,7 +45,7 @@ public function store(Request $request)
         'penerbit'     => 'required|string|max:255',
         'stok'         => 'required|integer|min:0',
         'tahun_terbit' => 'required|date',
-        'kategori'     => 'required|in:Manga,Novel,Pengetahuan',
+        'kategori'     => 'required|in:manga,novel,pengetahuan',
         'cover'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
     ]);
 
@@ -115,5 +115,17 @@ public function update(Request $request, buku $buku)
     {
         $buku->delete();
         return redirect()->route('admin.buku')->with('Success', 'Data berhasil dihapus!');
+    }
+
+    public function addStock(Request $request, $id)
+    {
+        $request->validate([
+            'jumlah_stok' => 'required|integer|min:1'
+        ]);
+
+        $book = buku::findOrFail($id);
+        $book->increment('stok', $request->jumlah_stok);
+
+        return redirect()->back()->with('success', 'Stok berhasil ditambahkan!');
     }
 }

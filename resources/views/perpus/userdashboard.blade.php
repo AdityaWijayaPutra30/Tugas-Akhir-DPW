@@ -151,14 +151,75 @@
                         alt="Cover {{ $book->judul }}"
                         style="height:220px; object-fit:cover;">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title h6 mb-2">{{ $book->judul }}</h5>
-                        <span class="badge bg-danger mb-2 p-1" style="font-weight: 500; font-size: 0.65rem; width: fit-content; min-width: 50%;">{{ ucfirst($book->kategori) }}</span>
-                        <h6 class="card-subtitle mb-2 text-muted small">{{ $book->penulis }}</h6>
-                        <p class="card-text">{{ $book->penerbit }}</p>
-                        <form action="{{ route('user.borrow', $book->id) }}" method="POST" onsubmit="return confirm('Yakin ingin meminjam buku ini?')" class="mt-auto">
-                            @csrf
-                            <button type="submit" class="btn btn-success w-100">Pinjam</button>
-                        </form>
+                        <h5 class="card-title h6 mb-2 fw-bold text-truncate" title="{{ $book->judul }}">{{ $book->judul }}</h5>
+                        <span class="badge bg-danger mb-2 p-1" style="font-weight: 500; font-size: 0.65rem; width: fit-content;">{{ ucfirst($book->kategori) }}</span>
+                        
+                        <div class="mb-2 text-muted small">
+                            <div class="d-flex align-items-center mb-1">
+                                <i class="fa-solid fa-user-pen me-2" style="width: 16px;"></i>
+                                <span class="text-truncate">{{ $book->penulis }}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <i class="fa-solid fa-building me-2" style="width: 16px;"></i>
+                                <span class="text-truncate">{{ $book->penerbit }}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-box me-2" style="width: 16px;"></i>
+                                <span>Stok: <strong>{{ $book->stok }}</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            @if($book->stok > 0)
+                                <button type="button" class="btn btn-success w-100 btn-sm" data-bs-toggle="modal" data-bs-target="#borrowModal{{ $book->id }}">
+                                    <i class="fa-solid fa-book-open me-1"></i>Pinjam
+                                </button>
+                            @else
+                                <button type="button" class="btn btn-secondary w-100 btn-sm" disabled>Stok Habis</button>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Borrow Confirmation Modal -->
+                <div class="modal fade" id="borrowModal{{ $book->id }}" tabindex="-1" aria-labelledby="borrowModalLabel{{ $book->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="borrowModalLabel{{ $book->id }}"><i class="fa-solid fa-circle-info me-2 text-primary"></i>Konfirmasi Peminjaman</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="mb-3">Apakah kamu yakin ingin meminjam buku ini?</p>
+                                
+                                <div class="card mb-3 border-0 bg-light">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="{{ $book->cover ? Storage::url($book->cover) : asset('assets/placeholder.png') }}" class="img-fluid rounded-start h-100" alt="{{ $book->judul }}" style="object-fit: cover; max-height: 150px;">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body py-2">
+                                                <h6 class="card-title fw-bold mb-1">{{ $book->judul }}</h6>
+                                                <p class="card-text small text-muted mb-1"><i class="fa-solid fa-user-pen me-1"></i> {{ $book->penulis }}</p>
+                                                <p class="card-text small text-muted mb-1"><i class="fa-solid fa-building me-1"></i> {{ $book->penerbit }}</p>
+                                                <span class="badge bg-secondary">{{ ucfirst($book->kategori) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-warning py-2 mb-0 small">
+                                    <i class="fa-solid fa-triangle-exclamation me-1"></i> Pastikan kamu mengembalikan buku tepat waktu.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <form action="{{ route('user.borrow', $book->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Ya, Pinjam</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

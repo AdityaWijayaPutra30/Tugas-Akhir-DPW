@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="jumbotron">
-    <h1>Edit Admin</h1>
+    <h1><i class="fa-solid fa-user-pen me-2"></i>Edit Admin</h1>
 </div>
 
 <div class="container-fluid">
@@ -58,8 +58,8 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('developer.admin') }}" class="btn btn-secondary">Kembali</a>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save me-1"></i>Update</button>
+                <a href="{{ route('developer.admin') }}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-1"></i>Kembali</a>
             </form>
         </div>
     </div>

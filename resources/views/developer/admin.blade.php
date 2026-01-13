@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="jumbotron">
-    <h1>Data Admin</h1>
+    <h1><i class="fa-solid fa-user-shield me-2"></i>Data Admin</h1>
 </div>
 
 <div class="container-fluid">
@@ -38,11 +38,11 @@
                                 <td>{{ $admin->username }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>
-                                    <a href="{{ route('developer.edit_admin', $admin->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('developer.edit_admin', $admin->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square me-1"></i>Edit</a>
                                     <form action="{{ route('developer.destroy_admin', $admin->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus admin ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash me-1"></i>Hapus</button>
                                     </form>
                                 </td>
                             </tr>

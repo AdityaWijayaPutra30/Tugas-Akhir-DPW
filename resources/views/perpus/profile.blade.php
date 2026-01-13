@@ -101,8 +101,27 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ url()->previous() }}" class="btn btn-secondary">Kembali</a>
-                        <a href="{{ route('logout') }}" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin logout?')">Logout</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="logoutModalLabel">Konfirmasi Logout</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin keluar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <a href="{{ route('logout') }}" class="btn btn-danger">Keluar</a>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>Data Peminjaman</h1>
+        <h1><i class="fa-solid fa-clipboard-list me-2"></i>Data Peminjaman</h1>
     </div>
 
     <div class="table-container">

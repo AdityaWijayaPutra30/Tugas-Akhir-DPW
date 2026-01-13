@@ -86,7 +86,7 @@
 
           <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{ route('buku.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('admin.buku') }}" class="btn btn-secondary">Kembali</a>
           </div>
         </form>
       </div>
