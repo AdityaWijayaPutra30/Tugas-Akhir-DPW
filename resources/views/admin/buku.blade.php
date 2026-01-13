@@ -20,6 +20,7 @@
                     <th>Penerbit</th>
                     <th>Stok</th>
                     <th>Tahun</th>
+                    <th>Kategori</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -33,8 +34,9 @@
                     <td>{{ $book->judul }}</td>
                     <td>{{ $book->penulis }}</td>
                     <td>{{ $book->penerbit }}</td>
-                    <td>{{ $book->stok }}</td>
+                    <td>{{ $book->stok }}</td> 
                     <td>{{ \Carbon\Carbon::parse($book->tahun_terbit)->format('Y') }}</td>
+                    <td>{{ $book->kategori }}</td> 
                     <td>
                         <div class="d-flex gap-1">
                             <form action="{{ route('buku.destroy', $book->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus buku ini?')">

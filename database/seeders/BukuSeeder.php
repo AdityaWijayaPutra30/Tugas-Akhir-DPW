@@ -45,7 +45,7 @@ class BukuSeeder extends Seeder
                 'judul'        => 'Ilmu Pengetaahuan Alam',
                 'penulis'      => 'Wijay',
                 'penerbit'     => 'Wijay Lagi',
-                'stok'         => 2,
+                'stok'         => 10,
                 'tahun_terbit' => '2017-06-20',
                 'kategori'     => 'Pengetahuan',
                 'cover'        => 'covers/ipa.jpg',
