@@ -50,7 +50,8 @@ Route::middleware(['admin', 'prevent-back-history'])->group(function () {
     Route::get('/admin/peminjaman', [AdminController::class, 'peminjaman'])->name('admin.peminjaman');
 
 });
-Route::resource('buku', BukuController::class);
+    Route::put('/buku/{id}/add-stock', [BukuController::class, 'addStock'])->name('buku.addStock');
+    Route::resource('buku', BukuController::class);
 
 // DEVELOPER DASHBOARD
 use App\Http\Controllers\DeveloperController;

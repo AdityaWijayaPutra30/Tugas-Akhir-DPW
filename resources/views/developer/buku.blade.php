@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>Data Buku</h1>
+        <h1><i class="fa-solid fa-book me-2"></i>Data Buku</h1>
     </div>
 
     <!-- No Add Button for Developer -->

@@ -67,6 +67,12 @@ class UserDashboardController extends Controller
     public function borrow($id)
     {
         $userId = session('user_id');
+        $book = buku::findOrFail($id);
+
+        // Server-side check for stock
+        if ($book->stok < 1) {
+            return redirect()->back()->with('error', 'Maaf, stok buku ini sedang habis.');
+        }
 
         // Check if book is already borrowed by this user and not yet returned (assuming 'dipinjam' means active)
         $existingBorrow = peminjaman::where('user_id', $userId)
@@ -86,12 +92,21 @@ class UserDashboardController extends Controller
             'status' => 'dipinjam'
         ]);
 
+        // Decrement stock
+        $book->decrement('stok');
+
         return redirect()->route('user.dipinjam')->with('success', 'Buku berhasil dipinjam!');
     }
 
     public function cancelBorrow($id)
     {
-        $borrow = peminjaman::findOrFail($id);
+        $borrow = peminjaman::with('buku')->findOrFail($id);
+        
+        // Increment stock back
+        if ($borrow->buku) {
+            $borrow->buku->increment('stok');
+        }
+
         $borrow->delete(); // Or update status to 'dibatalkan'
 
         return redirect()->back()->with('success', 'Peminjaman dibatalkan.');

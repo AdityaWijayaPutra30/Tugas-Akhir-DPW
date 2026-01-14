@@ -95,11 +95,11 @@ body {
 
 .content {
     flex-grow: 1;
-    padding: 2rem;
+    padding: 3rem;
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
 }
@@ -126,11 +126,9 @@ body {
 }
 
 .stats-container {
-    background-color: rgba(220, 220, 220, 0.9);
-    border-radius: 10px;
+    background-color: #fafafa;
     padding: 3rem;
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
     color: #000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -177,11 +175,9 @@ body {
 
 /* Table UI */
 .table-container {
-    background-color: rgba(220, 220, 220, 0.9);
-    border-radius: 10px;
+    background-color: #fafafa;
     padding: 2rem;
-    width: 95%;
-    max-width: 1200px;
+    width: 100%;
     color: #000;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     margin-top: 2rem;
