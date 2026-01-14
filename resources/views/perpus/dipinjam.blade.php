@@ -144,7 +144,40 @@
             z-index: 1000;
         }
 
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #198754;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
 
+        #backToTop:hover {
+            background-color: #146c43;
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
@@ -185,7 +218,7 @@
     <div class="jumbotron-user text-white text-center">
         <div class="jumbotron-bg" id="jumbotronBg"></div>
         <div class="jumbotron py-auto container">
-            <h1 class="display-4 fw-semibold">Selamat Datang di YuBook</h1>
+            <h1 class="display-4 fw-semibold">Selamat Datang di <span class="text-warning">Yubook</span></h1>
         </div>
     </div>
 
@@ -214,9 +247,9 @@
                         <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Cari..." aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Cari</button>
+                <form class="d-flex" role="search" action="{{ route('user.dipinjam') }}" method="GET">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Cari..." aria-label="Search" value="{{ request('search') }}" />
+                    <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass me-1"></i> Cari</button>
                 </form>
             </div>
         </div>
@@ -277,17 +310,39 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTop" title="Ke Atas">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script>
         window.addEventListener('scroll', function() {
             const scrollValue = window.scrollY;
             const jumbotronBg = document.getElementById('jumbotronBg');
+            const backToTop = document.getElementById('backToTop');
             
-            // Only zoom if the jumbotron is visible (scroll is less than its height)
+            // Zoom effect for jumbotron
             if (scrollValue < 600) {
                 const scale = 1 + (scrollValue / 2000);
                 jumbotronBg.style.transform = `scale(${scale})`;
             }
+
+            // Back to top button visibility
+            if (scrollValue > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>

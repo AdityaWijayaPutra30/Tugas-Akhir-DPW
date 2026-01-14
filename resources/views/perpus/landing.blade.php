@@ -88,6 +88,41 @@
                 text-align: center;
             }
         }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #198754;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        #backToTop:hover {
+            background-color: #146c43;
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -125,7 +160,7 @@
     
     <div class="jumbotron text-white">
         <div class="left">
-            <h1>Selamat Datang di YuBook <span class="fw-bold">{{ session('username') ?? 'Guest' }}</span></h1>
+            <h1>Selamat Datang di YuBook <span class="fw-bold text-warning">{{ session('username') ?? 'Guest' }}</span></h1>
             <p>Tempat yang tepat untuk menemukan buku yang Anda butuhkan</p>
             <a href="{{ route('user.dashboard') }}" class="btn btn-success btn-lg">Buka Dashboard</a>
         </div>
@@ -141,6 +176,31 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTop" title="Ke Atas">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top button visibility
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>

@@ -18,16 +18,34 @@ class UserDashboardController extends Controller
         ]);
     }
 
-    public function index($kategori = null)
+    public function index(Request $request, $kategori = null)
     {
+        $search = $request->query('search');
+        $query = buku::query();
+
         if ($kategori) {
-            $books = buku::where('kategori', 'LIKE', $kategori)->get();
-            $title = 'Kategori: ' . ucfirst($kategori);
+            $query->where('kategori', 'LIKE', $kategori);
             $activeDashboard = strtolower($kategori);
         } else {
-            $books = buku::all();
-            $title = 'Semua Buku';
             $activeDashboard = 'all';
+        }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('judul', 'LIKE', "%$search%")
+                  ->orWhere('penulis', 'LIKE', "%$search%")
+                  ->orWhere('penerbit', 'LIKE', "%$search%");
+            });
+        }
+
+        $books = $query->get();
+
+        if ($search) {
+            $title = 'Hasil Pencarian: "' . $search . '"';
+        } elseif ($kategori) {
+            $title = 'Kategori: ' . ucfirst($kategori);
+        } else {
+            $title = 'Semua Buku';
         }
 
         return view('perpus.userdashboard', [
@@ -35,7 +53,7 @@ class UserDashboardController extends Controller
             'title' => $title,
             'active' => 'dashboard', // Main nav active state
             'activeDashboard' => $activeDashboard, // Sub nav (categories) active state
-            'emptyMessage' => 'Tidak ada buku tersedia dalam kategori ini.'
+            'emptyMessage' => $search ? 'Tidak ada buku yang cocok dengan pencarian Anda.' : 'Tidak ada buku tersedia dalam kategori ini.'
         ]);
     }
 
@@ -49,17 +67,28 @@ class UserDashboardController extends Controller
         ]);
     }
 
-    public function dipinjam()
+    public function dipinjam(Request $request)
     {
         $userId = session('user_id');
-        $borrowedBooks = peminjaman::with('buku')
+        $search = $request->query('search');
+        
+        $query = peminjaman::with('buku')
             ->where('user_id', $userId)
-            ->where('status', 'dipinjam')
-            ->get();
+            ->where('status', 'dipinjam');
+
+        if ($search) {
+            $query->whereHas('buku', function($q) use ($search) {
+                $q->where('judul', 'LIKE', "%$search%")
+                  ->orWhere('penulis', 'LIKE', "%$search%")
+                  ->orWhere('penerbit', 'LIKE', "%$search%");
+            });
+        }
+
+        $borrowedBooks = $query->get();
 
         return view('perpus.dipinjam', [
             'borrowedBooks' => $borrowedBooks,
-            'title' => 'Buku Dipinjam',
+            'title' => $search ? 'Hasil Pencarian di My Buku: "' . $search . '"' : 'Buku Dipinjam',
             'active' => 'dipinjam'
         ]);
     }
