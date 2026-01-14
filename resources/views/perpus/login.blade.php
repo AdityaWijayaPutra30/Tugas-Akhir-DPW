@@ -4,6 +4,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/registerlogin.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 @endpush
 
 @section('content')
@@ -27,15 +28,21 @@
                     {{-- Username --}}
                     <div class="mt-5">
                         <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Masukkan username"
-                            required>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Masukkan username"
+                                required>
+                        </div>
                     </div>
 
                     {{-- Password --}}
                     <div class="mt-5">
                         <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Masukkan password"
-                            required>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" name="password" class="form-control" placeholder="Masukkan password"
+                                required>
+                        </div>
                     </div>
                     
                     <div class="mt-2 text-end">

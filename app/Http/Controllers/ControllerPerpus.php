@@ -121,7 +121,6 @@ public function logout(Request $request)
         $request->validate([
             'username' => 'required',
             'email' => 'required|email',
-            'password_lama' => 'required',
             'password_baru' => 'required|min:8',
         ]);
 
@@ -133,11 +132,6 @@ public function logout(Request $request)
         // Cek apakah user ada
         if (!$user) {
             return back()->with('error', 'Username atau Email tidak ditemukan');
-        }
-
-        // Cek password lama
-        if (!Hash::check($request->password_lama, $user->password)) {
-            return back()->with('error', 'Password lama salah');
         }
 
         // Update password

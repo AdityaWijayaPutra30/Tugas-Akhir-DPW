@@ -4,6 +4,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/registerlogin.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 @endpush
 
 @section('content')
@@ -36,25 +37,28 @@
                     {{-- Username --}}
                     <div class="mt-3">
                         <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+                        </div>
                     </div>
 
                     {{-- Email --}}
                     <div class="mt-3">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Masukkan email" required>
-                    </div>
-
-                    {{-- Password Lama --}}
-                    <div class="mt-3">
-                        <label class="form-label">Password Lama</label>
-                        <input type="password" name="password_lama" class="form-control" placeholder="Masukkan password lama" required>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" name="email" class="form-control" placeholder="Masukkan email" required>
+                        </div>
                     </div>
 
                     {{-- Password Baru --}}
                     <div class="mt-3">
                         <label class="form-label">Password Baru</label>
-                        <input type="password" name="password_baru" class="form-control" placeholder="Masukkan password baru" required>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" name="password_baru" class="form-control" placeholder="Masukkan password baru" required>
+                        </div>
                     </div>
 
                     {{-- Tombol Submit --}}
