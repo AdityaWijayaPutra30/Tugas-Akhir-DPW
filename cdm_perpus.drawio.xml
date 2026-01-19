@@ -23,22 +23,19 @@
           <mxGeometry height="22" width="160" y="92" as="geometry" />
         </mxCell>
         <mxCell id="cdm_peminjaman" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" value="Peminjaman" vertex="1">
-          <mxGeometry height="114" width="180" x="400" y="120" as="geometry" />
+          <mxGeometry height="92" width="180" x="400" y="120" as="geometry" />
         </mxCell>
         <mxCell id="pa1" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- tanggal_pinjam" vertex="1">
           <mxGeometry height="22" width="180" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="pa2" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="-gambar_buku" vertex="1">
+        <mxCell id="pa2" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- tanggal_kembali" vertex="1">
           <mxGeometry height="22" width="180" y="48" as="geometry" />
         </mxCell>
-        <mxCell id="pa3" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- tgl_kembali_aktual" vertex="1">
+        <mxCell id="pa3" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- status" vertex="1">
           <mxGeometry height="22" width="180" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="pa4" parent="cdm_peminjaman" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- status" vertex="1">
-          <mxGeometry height="22" width="180" y="92" as="geometry" />
-        </mxCell>
         <mxCell id="cdm_buku" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Buku" vertex="1">
-          <mxGeometry height="136" width="160" x="720" y="120" as="geometry" />
+          <mxGeometry height="180" width="160" x="720" y="120" as="geometry" />
         </mxCell>
         <mxCell id="ba1" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- judul" vertex="1">
           <mxGeometry height="22" width="160" y="26" as="geometry" />
@@ -49,11 +46,17 @@
         <mxCell id="ba3" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- penerbit" vertex="1">
           <mxGeometry height="22" width="160" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="ba4" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- tahun_terbit" vertex="1">
+        <mxCell id="ba4" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- stok" vertex="1">
           <mxGeometry height="22" width="160" y="92" as="geometry" />
         </mxCell>
-        <mxCell id="ba5" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- stok" vertex="1">
+        <mxCell id="ba5" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- tahun_terbit" vertex="1">
           <mxGeometry height="22" width="160" y="114" as="geometry" />
+        </mxCell>
+        <mxCell id="ba6" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- kategori" vertex="1">
+          <mxGeometry height="22" width="160" y="136" as="geometry" />
+        </mxCell>
+        <mxCell id="ba7" parent="cdm_buku" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- cover" vertex="1">
+          <mxGeometry height="22" width="160" y="158" as="geometry" />
         </mxCell>
         <mxCell id="cdm_rel1" edge="1" parent="1" source="cdm_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" target="cdm_peminjaman" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -68,6 +71,32 @@
         </mxCell>
         <mxCell id="cdm_txt2" connectable="0" parent="cdm_rel2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="berisi" vertex="1">
           <mxGeometry relative="1" x="-0.2" y="-10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cdm_developer" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Developer" vertex="1">
+          <mxGeometry height="136" width="160" x="120" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="da1" parent="cdm_developer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- name" vertex="1">
+          <mxGeometry height="22" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="da2" parent="cdm_developer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- username" vertex="1">
+          <mxGeometry height="22" width="160" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="da3" parent="cdm_developer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- email" vertex="1">
+          <mxGeometry height="22" width="160" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="da4" parent="cdm_developer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- password" vertex="1">
+          <mxGeometry height="22" width="160" y="92" as="geometry" />
+        </mxCell>
+        <mxCell id="da5" parent="cdm_developer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" value="- role" vertex="1">
+          <mxGeometry height="22" width="160" y="114" as="geometry" />
+        </mxCell>
+        <mxCell id="cdm_rel3" edge="1" parent="1" source="cdm_developer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;startArrow=ERone;endArrow=ERmany;startFill=0;endFill=0;" target="cdm_user" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cdm_txt3" connectable="0" parent="cdm_rel3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="mengelola" vertex="1">
+          <mxGeometry relative="1" x="-0.2" y="0" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>

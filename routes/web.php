@@ -26,7 +26,7 @@ Route::post('/logout', [ControllerPerpus::class, 'logout'])->name('logout');
 use App\Http\Controllers\UserDashboardController;
 
 // USER DASHBOARD
-Route::middleware(['user', 'prevent-back-history'])->group(function () {
+Route::middleware(['user', 'prevent-back-history'])->group(function (){
 Route::get('/user/home', [UserDashboardController::class, 'landing'])->name('user.home');
 Route::get('/user/dashboard/{kategori?}', [UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::get('/user/profile', [UserDashboardController::class, 'profile'])->name('user.profile');

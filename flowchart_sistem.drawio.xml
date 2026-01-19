@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-01-18T14:46:00.000Z" agent="Antigravity" etag="version3" version="21.0.0" type="device">
+  <diagram id="flowchart-sistem" name="Flowchart Sistem Perpustakaan">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- START -->
+        <mxCell id="start" value="start" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="540" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- LOGIN & REGISTER -->
+        <mxCell id="login" value="login" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="120" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="register" value="register" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="120" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_start_login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="start" target="login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_login_register" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="login" target="register">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DECISION: isAdmin/isUser/isDeveloper -->
+        <mxCell id="dec_role" value="role?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_login_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="login" target="dec_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- USER SIDE (LEFT) -->
+        <mxCell id="lbl_user" value="User" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user_dashboard" value="user_dashboard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dec_user" value="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_role" target="user_dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="about" value="about" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="profile" value="profile" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="home" value="home" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="440" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pinjam_buku" value="pinjam_buku" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="540" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dec_stok" value="stok_buku &gt; 0" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="630" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="buku_bisa_dipinjam" value="buku_bisa_dipinjam" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="645" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="tidak_bisa_pinjam" value="tidak_bisa_pinjam" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="750" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_about" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="user_dashboard" target="about">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="user_dashboard" target="profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_home" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="user_dashboard" target="home">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_pinjam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="user_dashboard" target="pinjam_buku">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_pinjam_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="pinjam_buku" target="dec_stok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_stok_true" value="True" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_stok" target="buku_bisa_dipinjam">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_stok_false" value="False" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_stok" target="tidak_bisa_pinjam">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ADMIN SIDE (RIGHT) -->
+        <mxCell id="lbl_admin" value="Admin" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="880" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="admin_dashboard" value="admin_dashboard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dec_admin" value="admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_role" target="admin_dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="data_keseluruhan" value="data_keseluruhan" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="440" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data_peminjaman" value="data_peminjaman" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="440" width="120" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data_buku" value="data_buku" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="540" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="batalkan_pinjaman" value="batalkan_pinjaman" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edit_tanggal" value="edit_tanggal" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="490" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hapus_buku" value="hapus" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edit_buku" value="edit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="620" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_admin_keseluruhan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="admin_dashboard" target="data_keseluruhan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_admin_peminjaman" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="admin_dashboard" target="data_peminjaman">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_admin_buku" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="admin_dashboard" target="data_buku">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_peminjaman_batalkan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_peminjaman" target="batalkan_pinjaman">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_peminjaman_edit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_peminjaman" target="edit_tanggal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_buku_hapus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_buku" target="hapus_buku">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_buku_edit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_buku" target="edit_buku">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- DEVELOPER SIDE (TOP RIGHT) -->
+        <mxCell id="lbl_developer" value="Developer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1080" y="210" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="developer_dashboard" value="developer_dashboard" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="280" width="140" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dec_developer" value="developer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_role" target="developer_dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="data_user" value="data_user" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="140" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data_admin" value="data_admin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="140" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statistik" value="statistik" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="140" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hapus_user" value="hapus" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="50" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edit_user" value="edit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="50" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hapus_admin" value="hapus" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="50" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edit_admin" value="edit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="50" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dev_user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="developer_dashboard" target="data_user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dev_admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="developer_dashboard" target="data_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_dev_statistik" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="developer_dashboard" target="statistik">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_hapus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_user" target="hapus_user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_user_edit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_user" target="edit_user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_admin_hapus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_admin" target="hapus_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow_admin_edit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="data_admin" target="edit_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

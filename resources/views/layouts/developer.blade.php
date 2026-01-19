@@ -27,7 +27,6 @@
                 <div class="menu">
                     <ul>
                         <li>
-                            <!-- Assuming we want to show the username like in admin dashboard -->
                             <h1>{{ session('username') ?? 'Developer' }}</h1>
                         </li>
                         <li>

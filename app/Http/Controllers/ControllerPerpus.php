@@ -30,14 +30,10 @@ public function logout(Request $request)
 
 
     // tampil register
-    public function register()
-    {
+    public function register() {
         return view('perpus.register');
     }
-    public function prosesLogin(Request $request)
-
-
-    {
+    public function prosesLogin(Request $request){
         // validasi
         $request->validate([
             'username' => 'required',
