@@ -104,7 +104,7 @@
             margin: 20px 0;
             opacity: 1;
         }
-        
+
         .empty-state {
             text-align: center;
             padding: 50px;
@@ -244,7 +244,7 @@
                         <a class="nav-link" href="{{ route('user.dashboard') }}">Semua</a>
                     </li>
                     <li class="nav-item nav-link">
-                        <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>
+                        <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">Riwayat Peminjaman</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" action="{{ route('user.dipinjam') }}" method="GET">
@@ -321,7 +321,7 @@
             const scrollValue = window.scrollY;
             const jumbotronBg = document.getElementById('jumbotronBg');
             const backToTop = document.getElementById('backToTop');
-            
+
             // Zoom effect for jumbotron
             if (scrollValue < 600) {
                 const scale = 1 + (scrollValue / 2000);

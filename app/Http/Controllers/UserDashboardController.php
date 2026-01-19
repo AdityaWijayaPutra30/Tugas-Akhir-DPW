@@ -48,12 +48,31 @@ class UserDashboardController extends Controller
             $title = 'Semua Buku';
         }
 
+        // Check for overdue books
+        $overdueBooks = [];
+        if (session('user_id')) {
+            $overdueBooks = peminjaman::with('buku')
+                ->where('user_id', session('user_id'))
+                ->where('status', 'dipinjam')
+                ->whereDate('tanggal_kembali', '<', now())
+                ->get()
+                ->map(function($peminjaman) {
+                    $daysOverdue = now()->diffInDays($peminjaman->tanggal_kembali);
+                    return [
+                        'judul' => $peminjaman->buku->judul,
+                        'tanggal_kembali' => $peminjaman->tanggal_kembali,
+                        'days_overdue' => $daysOverdue
+                    ];
+                });
+        }
+
         return view('perpus.userdashboard', [
             'books' => $books,
             'title' => $title,
             'active' => 'dashboard', // Main nav active state
             'activeDashboard' => $activeDashboard, // Sub nav (categories) active state
-            'emptyMessage' => $search ? 'Tidak ada buku yang cocok dengan pencarian Anda.' : 'Tidak ada buku tersedia dalam kategori ini.'
+            'emptyMessage' => $search ? 'Tidak ada buku yang cocok dengan pencarian Anda.' : 'Tidak ada buku tersedia dalam kategori ini.',
+            'overdueBooks' => $overdueBooks
         ]);
     }
 

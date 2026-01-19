@@ -75,7 +75,7 @@ public function logout(Request $request)
         }
 
         // Jika tidak ditemukan di kedua tabel
-        return back()->with('error', 'Username atau password salah');
+        return back()->with('error', 'Username atau password salah')->withInput();
     }
 
     // proses register

@@ -15,9 +15,10 @@
             <div class="card-body">
 
                 <h4 class="text-center mb-4">Login Perpustakaan</h4>
-                @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
                 </div>
                 @endif
 
@@ -30,7 +31,7 @@
                         <label class="form-label">Username</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" name="username" class="form-control" placeholder="Masukkan username"
+                            <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Masukkan username"
                                 required>
                         </div>
                     </div>
@@ -44,9 +45,9 @@
                                 required>
                         </div>
                     </div>
-                    
+
                     <div class="mt-2 text-end">
-                        <a href="{{ route('forgot.password') }}" class="text-decoration-none">Lupa Password?</a>
+                        <a href="{{  route('forgot.password') }}" class="text-decoration-none">Lupa Password?</a>
                     </div>
 
                     {{-- Tombol Login --}}

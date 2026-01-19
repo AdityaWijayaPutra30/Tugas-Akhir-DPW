@@ -149,7 +149,7 @@
                         <a class="nav-link {{ $activeDashboard == 'all' ? 'active' : '' }}" href="{{ route('user.dashboard') }}">Semua</a>
                     </li>
                     <li class="nav-item nav-link">
-                        <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">My Buku</a>
+                        <a class="nav-link {{ $active == 'dipinjam' ? 'active' : '' }}" href="{{ route('user.dipinjam') }}">Riwayat Peminjaman</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" action="{{ route('user.dashboard') }}" method="GET">
@@ -175,6 +175,31 @@
             </div>
         @endif
 
+        @if(isset($overdueBooks) && count($overdueBooks) > 0)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading mb-3">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                    Peringatan: Buku Terlambat Dikembalikan!
+                </h5>
+                <p class="mb-2">Anda memiliki <strong>{{ count($overdueBooks) }}</strong> buku yang sudah melewati tenggat waktu pengembalian:</p>
+                <ul class="mb-0">
+                    @foreach($overdueBooks as $overdue)
+                        <li>
+                            <strong>{{ $overdue['judul'] }}</strong> - 
+                            Seharusnya dikembalikan: {{ \Carbon\Carbon::parse($overdue['tanggal_kembali'])->format('d M Y') }}
+                            <span class="badge bg-dark ms-1">{{ $overdue['days_overdue'] }} hari terlambat</span>
+                        </li>
+                    @endforeach
+                </ul>
+                <hr>
+                <p class="mb-0 small">
+                    <i class="fa-solid fa-info-circle me-1"></i>
+                    Silakan segera kembalikan buku Anda atau hubungi admin untuk perpanjangan waktu.
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <h3 class="mb-4">{{ $title }}</h3>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
             @forelse($books as $book)
@@ -188,7 +213,7 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title h6 mb-2 fw-bold text-truncate" title="{{ $book->judul }}">{{ $book->judul }}</h5>
                         <span class="badge bg-danger mb-2 p-1" style="font-weight: 500; font-size: 0.65rem; width: fit-content;">{{ ucfirst($book->kategori) }}</span>
-                        
+
                         <div class="mb-2 text-muted small">
                             <div class="d-flex align-items-center mb-1">
                                 <i class="fa-solid fa-user-pen me-2" style="width: 16px;"></i>
@@ -226,7 +251,7 @@
                             </div>
                             <div class="modal-body">
                                 <p class="mb-3">Apakah kamu yakin ingin meminjam buku ini?</p>
-                                
+
                                 <div class="card mb-3 border-0 bg-light">
                                     <div class="row g-0">
                                         <div class="col-md-4">
@@ -242,7 +267,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="alert alert-warning py-2 mb-0 small">
                                     <i class="fa-solid fa-triangle-exclamation me-1"></i> Pastikan kamu mengembalikan buku tepat waktu.
                                 </div>
@@ -286,7 +311,7 @@
             const scrollValue = window.scrollY;
             const jumbotronBg = document.getElementById('jumbotronBg');
             const backToTop = document.getElementById('backToTop');
-            
+
             // Zoom effect for jumbotron
             if (scrollValue < 600) {
                 const scale = 1 + (scrollValue / 2000);
