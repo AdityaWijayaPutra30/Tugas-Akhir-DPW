@@ -185,7 +185,7 @@
                 <ul class="mb-0">
                     @foreach($overdueBooks as $overdue)
                         <li>
-                            <strong>{{ $overdue['judul'] }}</strong> - 
+                            <strong>{{ $overdue['judul'] }}</strong> -
                             Seharusnya dikembalikan: {{ \Carbon\Carbon::parse($overdue['tanggal_kembali'])->format('d M Y') }}
                             <span class="badge bg-dark ms-1">{{ $overdue['days_overdue'] }} hari terlambat</span>
                         </li>

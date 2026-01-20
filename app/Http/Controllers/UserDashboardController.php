@@ -52,20 +52,20 @@ class UserDashboardController extends Controller
         $overdueBooks = [];
         if (session('user_id')) {
             $overdueBooks = peminjaman::with('buku')
-                ->where('user_id', session('user_id'))
-                ->where('status', 'dipinjam')
-                ->whereDate('tanggal_kembali', '<', now())
-                ->get()
-                ->map(function($peminjaman) {
-                    $daysOverdue = now()->diffInDays($peminjaman->tanggal_kembali);
-                    return [
+                ->where('user_id', session('user_id')) // ini buat ngecek user_id dengan user yang lagi login (session)
+                ->where('status', 'dipinjam') //ini gunanya ngecek status buku dipinjam atau tidak, kalo tidak dipinjam berarti overduebook tidak akan terisi
+                ->whereDate('tanggal_kembali', '<', now()) // ngecek tanggal
+                ->get() // jika semua syarat valid, data terambil dan masuk ke $overdueBooks
+                ->map(function($peminjaman) { // map gunanya buat merapihkan data yang diambil tadi agar tampil dengan rapih
+                    $daysOverdue = now()->diffInDays($peminjaman->tanggal_kembali); // mengambil data berapa hari perbedaan tgl now() dengan tanggal_kembali
+                    return [ //gunanya untuk merapihkan data 
                         'judul' => $peminjaman->buku->judul,
                         'tanggal_kembali' => $peminjaman->tanggal_kembali,
                         'days_overdue' => $daysOverdue
                     ];
                 });
         }
-
+        //guna array yang dibawah ini, untuk mewarisi variable ke view userdashboard
         return view('perpus.userdashboard', [
             'books' => $books,
             'title' => $title,
@@ -82,7 +82,7 @@ class UserDashboardController extends Controller
         return view('perpus.profile', [
             'user' => $user,
             'title' => 'Profil Pengguna',
-            'active' => 'profile' 
+            'active' => 'profile'
         ]);
     }
 
@@ -90,7 +90,7 @@ class UserDashboardController extends Controller
     {
         $userId = session('user_id');
         $search = $request->query('search');
-        
+
         $query = peminjaman::with('buku')
             ->where('user_id', $userId)
             ->where('status', 'dipinjam');
@@ -131,7 +131,7 @@ class UserDashboardController extends Controller
         if ($existingBorrow) {
             return redirect()->back()->with('error', 'Anda sudah meminjam buku ini dan belum dikembalikan!');
         }
-        
+
         peminjaman::create([
             'user_id' => $userId,
             'buku_id' => $id,
@@ -149,7 +149,7 @@ class UserDashboardController extends Controller
     public function cancelBorrow($id)
     {
         $borrow = peminjaman::with('buku')->findOrFail($id);
-        
+
         // Increment stock back
         if ($borrow->buku) {
             $borrow->buku->increment('stok');
