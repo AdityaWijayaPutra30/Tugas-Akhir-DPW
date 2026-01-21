@@ -20,21 +20,27 @@ class UserDashboardController extends Controller
 
     public function index(Request $request, $kategori = null)
     {
+        // Ambil input pencarian dari query string URL (contoh: ?search=laravel)
         $search = $request->query('search');
+        
+        // Memulai query pada model buku
         $query = buku::query();
 
+        // Jika ada parameter kategori di URL, filter buku berdasarkan kategori tersebut
         if ($kategori) {
             $query->where('kategori', 'LIKE', $kategori);
             $activeDashboard = strtolower($kategori);
         } else {
+            // Jika tidak ada kategori, set default ke 'all'
             $activeDashboard = 'all';
         }
 
+        // Jika ada input pencarian, tambahkan kondisi filter judul, penulis, atau penerbit
         if ($search) {
             $query->where(function($q) use ($search) {
-                $q->where('judul', 'LIKE', "%$search%")
-                  ->orWhere('penulis', 'LIKE', "%$search%")
-                  ->orWhere('penerbit', 'LIKE', "%$search%");
+                $q->where('judul', 'LIKE', "%$search%") // Cari berdasarkan judul yang mirip
+                  ->orWhere('penulis', 'LIKE', "%$search%") // Atau cari berdasarkan penulis yang mirip
+                  ->orWhere('penerbit', 'LIKE', "%$search%"); // Atau cari berdasarkan penerbit yang mirip
             });
         }
 
@@ -89,17 +95,20 @@ class UserDashboardController extends Controller
     public function dipinjam(Request $request)
     {
         $userId = session('user_id');
+        // Ambil input pencarian dari query string khusus untuk halaman "My Buku"
         $search = $request->query('search');
 
+        // Ambil data peminjaman yang sedang aktif ('dipinjam') milik user yang sedang login
         $query = peminjaman::with('buku')
             ->where('user_id', $userId)
             ->where('status', 'dipinjam');
 
+        // Jika ada pencarian, lakukan filter pada relasi 'buku'
         if ($search) {
             $query->whereHas('buku', function($q) use ($search) {
-                $q->where('judul', 'LIKE', "%$search%")
-                  ->orWhere('penulis', 'LIKE', "%$search%")
-                  ->orWhere('penerbit', 'LIKE', "%$search%");
+                $q->where('judul', 'LIKE', "%$search%") // Cari judul buku di daftar pinjaman
+                  ->orWhere('penulis', 'LIKE', "%$search%") // Cari penulis buku di daftar pinjaman
+                  ->orWhere('penerbit', 'LIKE', "%$search%"); // Cari penerbit buku di daftar pinjaman
             });
         }
 

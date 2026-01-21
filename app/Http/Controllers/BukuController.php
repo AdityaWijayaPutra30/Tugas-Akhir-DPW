@@ -46,7 +46,7 @@ public function store(Request $request)
         'stok'         => 'required|integer|min:0',
         'tahun_terbit' => 'required|date',
         'kategori'     => 'required|in:manga,novel,pengetahuan',
-        'cover'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'cover'        => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
     ]);
 
     if ($request->hasFile('cover')) {
