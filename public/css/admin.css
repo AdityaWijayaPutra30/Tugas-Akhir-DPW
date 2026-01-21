@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../assets/background_register.png');
@@ -10,25 +12,25 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container-admin {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-direction: row;
 }
 
 .sidebar-admin {
+    position: fixed !important;
+    top: 0;
+    left: 0;
     width: 350px;
-    height: 100vh;
+    height: 100vh !important;
     background-color: #1a1a1a;
-    /* Same as body for seamless look, or slightly different if needed */
     color: #fff;
     border-right: 1px solid #333;
-    /* Optional separation */
-    flex-shrink: 0;
+    z-index: 9999;
+    overflow-y: auto;
 }
 
 .sidebar-container {
@@ -94,7 +96,7 @@ body {
 }
 
 .content {
-    flex-grow: 1;
+    margin-left: 350px;
     padding: 3rem;
     color: #fff;
     display: flex;
@@ -102,6 +104,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+    width: calc(100% - 350px);
 }
 
 /* Remove Jumbotron white block style if it persists in other files */
