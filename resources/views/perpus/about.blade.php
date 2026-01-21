@@ -68,9 +68,8 @@
             <h2 class="fw-bold mb-4">Tentang YuBook</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-muted">YuBook adalah platform perpustakaan digital yang dirancang untuk mempermudah akses membaca bagi semua orang. Kami menyediakan berbagai koleksi buku dari berbagai genre yang bisa dipinjam dengan mudah.</p>
-                    <p class="text-muted">Misi kami adalah menumbuhkan minat baca di masyarakat dengan menyediakan layanan yang efisien, transparan, dan modern.</p>
-                </div>
+                    <p class="text-muted">
+Website ini adalah aplikasi perpustakaan online yang dibuat dengan Laravel untuk memudahkan peminjaman buku secara digital. Aplikasi ini punya tiga jenis pengguna dengan akses yang berbeda-beda. Pertama ada pengguna biasa yang bisa mencari dan meminjam buku, melihat koleksi buku yang sedang dipinjam, dan mengatur profil mereka. Kedua ada admin yang bertugas mengelola data buku, melihat daftar pengguna, dan memantau semua peminjaman yang terjadi. Ketiga ada developer yang punya akses paling lengkap untuk mengatur semua pengguna dan admin, termasuk mengubah role mereka atau menghapus akun jika diperlukan.</p>                </div>
                 <div class="col-md-6">
                     <img src="{{ asset('assets/background_home.png') }}" class="img-fluid rounded shadow-sm" alt="Library">
                 </div>
